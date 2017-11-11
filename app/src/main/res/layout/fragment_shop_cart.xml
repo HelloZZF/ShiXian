@@ -5,15 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/shopcart_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:elevation="4dp"
-        android:background="#05d712"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <ImageView
         android:id="@+id/shopcart_image"
         android:layout_width="100dp"
@@ -31,7 +22,7 @@
         android:textSize="20dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/shopcart_image" />
-    
+
     <LinearLayout
         android:id="@+id/shopcart_ll"
         android:layout_width="match_parent"
@@ -89,5 +80,28 @@
         android:layout_height="1dp"
         android:layout_above="@id/shopcart_ll"
         android:background="#eaf0f0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/shop_StatusbarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green"/>
+
+        <com.example.shixian.myToolbar
+            android:id="@+id/shopcart_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/green"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="我的佳肴"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

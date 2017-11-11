@@ -5,71 +5,78 @@
     android:layout_height="match_parent"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/classify_toolbar"
+    <LinearLayout
+        android:id="@+id/toolbar_LL"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#05d712"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.SearchView
-            android:id="@+id/home_searchView"
-            android:layout_width="wrap_content"
+        <View
+            android:id="@+id/classify_StatusbarView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:defaultQueryHint="请输入菜品"
-            app:iconifiedByDefault="false"/>
+            android:background="@color/green"/>
 
-    </android.support.v7.widget.Toolbar>
+        <com.example.shixian.myToolbar
+            android:id="@+id/classify_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/green"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:isShowClassifySearchView="true"
+            app:rightButtonIcon="@drawable/scanning">
 
-        <ScrollView
-            android:id="@+id/classify_scrollview"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_below="@id/classify_toolbar"
-            android:scrollbars="none">
+        </com.example.shixian.myToolbar>
 
-            <LinearLayout
-                android:id="@+id/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" />
+    </LinearLayout>
 
-
-        </ScrollView>
+    <ScrollView
+        android:id="@+id/classify_scrollview"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_LL"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/rank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/classify_scrollview"
-            android:layout_below="@id/classify_toolbar">
-
-            <Button
-                android:id="@+id/salerank"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#fff"
-                android:text="销量排序"/>
-
-            <Button
-                android:id="@+id/overall"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#fff"
-                android:text="综合排序"/>
-
-        </LinearLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/goods_pager"
+            android:id="@+id/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rank"
-            android:layout_toRightOf="@id/classify_scrollview" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/rank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/classify_scrollview"
+        android:layout_below="@id/toolbar_LL">
+
+        <Button
+            android:id="@+id/salerank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:text="销量排序"/>
+
+        <Button
+            android:id="@+id/overall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:text="综合排序"/>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/goods_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rank"
+        android:layout_toRightOf="@id/classify_scrollview" />
 
 </RelativeLayout>

@@ -5,30 +5,34 @@
     android:layout_height="match_parent"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/home_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#05d712"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-    <android.support.v7.widget.SearchView
-        android:id="@+id/home_searchView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:defaultQueryHint="请输入菜品或用户"
-        app:iconifiedByDefault="false"/>
-
-    </android.support.v7.widget.Toolbar>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/home_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/home_toolbar"
-        android:background="#eaf0f0"/>
+        android:background="#f1f5f6"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/home_StatusbarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.example.shixian.myToolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:rightButtonIcon="@drawable/lookus"
+            app:leftButtonIcon="@drawable/foodclass"
+            app:isShowHomeSearchView="true">
+
+        </com.example.shixian.myToolbar>
+
+    </LinearLayout>
 
 </RelativeLayout>

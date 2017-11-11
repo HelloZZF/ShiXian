@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ public class UserFragment extends Fragment {
     private ImageView itemicon8;
     private ImageView itemicon8s;
     private LinearLayout useritem1;
+    private View statusBar;
 
     @Nullable
     @Override
@@ -77,6 +81,7 @@ public class UserFragment extends Fragment {
         itemicon7s = (ImageView) view.findViewById(R.id.item_icon7s);
         itemicon8 = (ImageView) view.findViewById(R.id.item_icon8);
         itemicon8s = (ImageView) view.findViewById(R.id.item_icon8s);
+        statusBar = view.findViewById(R.id.user_StatusbarView);
         initUser();
         initItem();
         useritem1 = (LinearLayout) view.findViewById(R.id.user_item1);
@@ -86,14 +91,35 @@ public class UserFragment extends Fragment {
                 Toast.makeText(activity, "哈哈哈哈哈", Toast.LENGTH_SHORT).show();
             }
         });
-    //背景图片虚化
+
+        BlurImage();
+        FitsStatusBar();
+        return view;
+    }
+
+    private void FitsStatusBar() {
+
+        int statusbarHeight = 0;
+
+//通过反射获取状态栏高度
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusbarHeight = getResources().getDimensionPixelSize(resourceId);
+        }
+
+//设置占位View的高度
+        ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+        layoutParams.height = statusbarHeight;
+
+    }
+
+    private void BlurImage() {
+        //背景图片虚化
         Resources res = getResources();
         Bitmap scaledBitmap = BitmapFactory.decodeResource(res, R.drawable.userimage);
-        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 8);
+        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 3);
         userbg.setScaleType(ImageView.ScaleType.CENTER_CROP);
         userbg.setImageBitmap(blurBitmap);
-
-        return view;
     }
 
     public void initUser() {
@@ -125,14 +151,12 @@ public class UserFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initToolbar("用户中心");
+//        initToolbar();
     }
 
-    public Toolbar initToolbar(CharSequence title) {
-        AppCompatActivity mAppCompatActivity = (AppCompatActivity) activity;
-        Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.user_toolbar);
-        toolbar.setTitle(title);
-        toolbar.setNavigationIcon(R.drawable.classify);
-        return toolbar;
-    }
+//    public Toolbar initToolbar() {
+//        AppCompatActivity mAppCompatActivity = (AppCompatActivity) activity;
+//        Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.user_toolbar);
+//        return toolbar;
+//    }
 }

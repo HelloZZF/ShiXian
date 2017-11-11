@@ -51,15 +51,15 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == ITEM_TYPE.ITEM_1.ordinal()) {
+        if (viewType == ITEM_TYPE.ITEM_2.ordinal()) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_1,  parent, false);
-            return new Item1Holder(view, myItem1, context);
+            return new Item2Holder(view);
 
-        }else if (viewType == ITEM_TYPE.ITEM_2.ordinal()) {
+        }else if (viewType == ITEM_TYPE.ITEM_1.ordinal()) {
 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_2,  parent, false);
-            return new Item2Holder(view);
+            return new Item1Holder(view, myItem1, context);
 
         } else if (viewType == ITEM_TYPE.ITEM_3.ordinal()) {
 
@@ -103,9 +103,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (position == 0){
             return ITEM_TYPE.ITEM_6.ordinal();
         }else if (position == 1){
-            return ITEM_TYPE.ITEM_1.ordinal();
-        } else if (position == 2) {
             return ITEM_TYPE.ITEM_2.ordinal();
+        } else if (position == 2) {
+            return ITEM_TYPE.ITEM_1.ordinal();
         } else if (position == 3) {
             return ITEM_TYPE.ITEM_3.ordinal();
         } else if (position == 4) {
@@ -133,20 +133,20 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class Item2Holder extends RecyclerView.ViewHolder {
 
-        public Button togo;
-
-        public Button diy;
-
-        public Button discuss;
-
-        public Button rank;
+//        public Button togo;
+//
+//        public Button diy;
+//
+//        public Button discuss;
+//
+//        public Button rank;
 
         public Item2Holder (View view) {
             super(view);
-            togo = (Button) view.findViewById(R.id.togo);
-            diy = (Button) view.findViewById(R.id.diy);
-            discuss = (Button) view.findViewById(R.id.discuss);
-            rank = (Button) view.findViewById(R.id.rank);
+//            togo = (Button) view.findViewById(R.id.togo);
+//            diy = (Button) view.findViewById(R.id.diy);
+//            discuss = (Button) view.findViewById(R.id.discuss);
+//            rank = (Button) view.findViewById(R.id.rank);
         }
 
 
@@ -186,11 +186,11 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class Item4Holder extends RecyclerView.ViewHolder {
 
-        public TextView like;
+//        public TextView like;
 
         public Item4Holder (View view){
             super(view);
-            like = (TextView) view.findViewById(R.id.like);
+//            like = (TextView) view.findViewById(R.id.item3_text);
         }
 
     }

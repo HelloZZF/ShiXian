@@ -2,102 +2,144 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
-    android:layout_marginBottom="5dp">
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/foryoutext"
+            android:id="@+id/item3_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="23dp"
-            android:text="我为你搭"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginLeft="8dp"/>
+            android:text="潮流资讯"
+            android:textColor="@color/green3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="12dp"
+            android:layout_centerInParent="true"/>
 
-        <ImageView
-            android:id="@+id/foryouimage"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:layout_toRightOf="@id/foryoutext"
-            android:layout_margin="5dp"
-            android:background="@drawable/item3_1"/>
+        <!--<View-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="0.6dp"-->
+            <!--android:background="#00ff7f"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toLeftOf="@id/item3_text"/>-->
 
-        <TextView
-            android:id="@+id/foryoucontent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="特级营养师为您专业搭配"
-            android:layout_below="@id/foryouimage"
-            android:layout_margin="6dp" />
-
-        <Button
-            android:id="@+id/foryou"
+        <View
             android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_below="@id/foryoucontent"
-            android:layout_marginLeft="150dp"
-            android:layout_marginBottom="3dp"
-            android:background="@drawable/go"/>
+            android:layout_height="0.6dp"
+            android:background="@color/green3"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item3_text"/>
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#eaf0f0"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/fashiontext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="23dp"
-            android:text="吃的潮流"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginLeft="8dp"/>
+            <TextView
+                android:id="@+id/foryoutext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="23dp"
+                android:text="我为你搭"
+                android:textColor="#696969"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="8dp"/>
 
-        <ImageView
-            android:id="@+id/fashionimage"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
-            android:layout_toRightOf="@id/fashiontext"
-            android:layout_margin="5dp"
-            android:background="@drawable/item3_2"/>
+            <ImageView
+                android:id="@+id/foryouimage"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/foryoutext"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/item3_1"/>
 
-        <TextView
-            android:id="@+id/fashioncontent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:text="新鲜的健康绿色饮食资讯"
-            android:layout_below="@id/fashionimage"
-            android:layout_margin="6dp"/>
+            <TextView
+                android:id="@+id/foryoucontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="特级营养师为您专业搭配"
+                android:layout_below="@id/foryouimage"
+                android:layout_margin="6dp" />
 
-        <Button
-            android:id="@+id/fashion"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_below="@id/fashioncontent"
-            android:layout_marginLeft="150dp"
-            android:layout_marginBottom="3dp"
-            android:background="@drawable/go"/>
+            <Button
+                android:id="@+id/foryou"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/foryoucontent"
+                android:layout_marginLeft="150dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/go"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#eaf0f0"/>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/fashiontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="18dp"
+                android:text="吃的潮流"
+                android:textColor="#696969"
+                android:textSize="23dp" />
+
+            <ImageView
+                android:id="@+id/fashionimage"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_margin="3dp"
+                android:layout_toRightOf="@id/fashiontext"
+                android:scaleType="fitXY"
+                android:src="@drawable/item3_2" />
+
+            <TextView
+                android:id="@+id/fashioncontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fashionimage"
+                android:layout_margin="6dp"
+                android:text="新鲜的健康绿色饮食资讯"
+                android:textSize="14dp" />
+
+            <Button
+                android:id="@+id/fashion"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/fashioncontent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/go" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

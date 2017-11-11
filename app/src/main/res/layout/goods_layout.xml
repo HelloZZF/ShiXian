@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
+    android:background="@color/white"
     android:layout_margin="5dp">
 
     
@@ -34,7 +34,7 @@
         android:layout_marginTop="10dp"
         android:text="啊啊啊啊啊啊"
         android:textSize="42px"
-        android:textColor="#bdbdbd"/>
+        android:textColor="@color/gray2"/>
 
     <TextView
         android:id="@+id/price"
@@ -46,7 +46,7 @@
         android:textSize="50px"
         android:text="20¥"
         android:textStyle="bold"
-        android:textColor="#ff6e40" />
+        android:textColor="@color/coral2" />
 
     <TextView
         android:id="@+id/thought"
@@ -57,7 +57,7 @@
         android:layout_marginLeft="7dp"
         android:textSize="42px"
         android:text="100好评"
-        android:textColor="#bdbdbd"/>
+        android:textColor="@color/gray2"/>
 
     <!--<View-->
         <!--android:layout_width="match_parent"-->

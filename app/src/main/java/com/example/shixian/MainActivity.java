@@ -1,5 +1,8 @@
 package com.example.shixian;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -8,11 +11,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.shixian.classify.ClassifyFragment;
 import com.example.shixian.homepage.HomePageFragment;
 import com.example.shixian.shopcart.ShopCartFragment;
 import com.example.shixian.user.UserFragment;
+import com.example.shixian.user.UserLoginActivity;
 
 import java.lang.reflect.Field;
 
@@ -22,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
 
+    private static int whetherLogin = 0;
+
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -30,6 +37,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_bottom);
+        initBottomNavigationView();
+        initViewPager();
+
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
+        //从一个活动的Fragment跳转到另一个活动的Fragment
+        int id = getIntent().getIntExtra("id",0);
+        if (id == 1) {
+            viewPager.setCurrentItem(3);
+        }
+
+    }
+
+    private void initBottomNavigationView() {
+
         disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,12 +73,23 @@ public class MainActivity extends AppCompatActivity {
                                 viewPager.setCurrentItem(2);
                                 break;
                             case R.id.menu_user:
-                                viewPager.setCurrentItem(3);
+                                if (whetherLogin == 0){
+                                    whetherLogin = 1;
+                                    bottomNavigationView.getMenu().getItem(3).setChecked(true);
+                                    Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
+                                    startActivity(intent);
+                                }else{
+                                    viewPager.setCurrentItem(3);
+                                }
                                 break;
                         }
                         return false;
                     }
                 });
+
+    }
+
+    private void initViewPager() {
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -61,11 +99,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (menuItem != null) {
-                    menuItem.setChecked(false);
-                } else {
-                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
-                }
+//                if (menuItem != null) {
+//                    menuItem.setChecked(false);
+//                } else {
+//                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+//                }
                 menuItem = bottomNavigationView.getMenu().getItem(position);
                 menuItem.setChecked(true);
             }
@@ -84,12 +122,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         setupViewPager(viewPager);
-
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            View decorView = getWindow().getDecorView();
-//            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
-//        }
 
     }
 

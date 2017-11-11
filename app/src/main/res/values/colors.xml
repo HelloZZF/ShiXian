@@ -4,5 +4,21 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
-    <color name="lightgray">#C2C2C2</color>
+    <color name="black">#000000</color>
+    <color name="black2">#696969</color>
+    <color name="blue">#7bbfea</color>
+    <color name="blue2">#00bcd3</color>
+    <color name="blue3">#48D1CC</color>
+    <color name="transparent">#5000</color>
+    <color name="transparent2">#00000000</color>
+    <color name="gray">#C2C2C2</color>
+    <color name="gray2">#bdbdbd</color>
+    <color name="green">#05d712</color>
+    <color name="green2">#ccdb30</color>
+    <color name="green3">#32cd32</color>
+    <color name="lightgreen">#5af599</color>
+    <color name="yellow">#feea3b</color>
+    <color name="red">#fe5722</color>
+    <color name="coral">#ff7f50</color>
+    <color name="coral2">#ff5d5e</color>
 </resources>
