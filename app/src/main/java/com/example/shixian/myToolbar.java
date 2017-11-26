@@ -3,6 +3,7 @@ package com.example.shixian;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.TintTypedArray;
 import android.support.v7.widget.Toolbar;
@@ -30,7 +31,7 @@ public class myToolbar extends Toolbar{
     private SearchView classifySearView;
     private ImageButton mRightButton;
     private ImageButton mLeftButton;
-
+    private TabLayout mTabLayout;
 
 
     public myToolbar(Context context) {
@@ -63,6 +64,7 @@ public class myToolbar extends Toolbar{
 
             boolean isShowHomeSearchView = a.getBoolean(R.styleable.myToolbar_isShowHomeSearchView, false);
             boolean isShowClassifySearchView = a.getBoolean(R.styleable.myToolbar_isShowClassifySearchView, false);
+            boolean isShowTabLayout = a.getBoolean(R.styleable.myToolbar_isShowTabLayout,false);
 
             if (isShowHomeSearchView) {
                 showHomeSearchView();
@@ -72,6 +74,10 @@ public class myToolbar extends Toolbar{
             if (isShowClassifySearchView) {
                 showClassifySearchView();
                 hideTitleView();
+            }
+
+            if (isShowTabLayout) {
+                showTabLayout();
             }
 
             a.recycle();
@@ -91,6 +97,7 @@ public class myToolbar extends Toolbar{
             classifySearView = (SearchView) mView.findViewById(R.id.classify_searchView);
             mRightButton = (ImageButton) mView.findViewById(R.id.toolbar_rightButton);
             mLeftButton = (ImageButton) mView.findViewById(R.id.toolbar_leftButton);
+            mTabLayout = (TabLayout) mView.findViewById(R.id.commdetails_tablayout);
 
             LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
             addView(mView, lp);
@@ -151,6 +158,16 @@ public class myToolbar extends Toolbar{
             homeSearView.setVisibility(GONE);
     }
 
+    public void showTabLayout(){
+        if (mTabLayout != null)
+            mTabLayout.setVisibility(VISIBLE);
+    }
+
+    public void hideTabLayout(){
+        if (mTabLayout != null)
+            mTabLayout.setVisibility(GONE);
+    }
+
     public void showClassifySearchView(){
         if (classifySearView != null)
             classifySearView.setVisibility(VISIBLE);
@@ -171,23 +188,23 @@ public class myToolbar extends Toolbar{
             mTextTitle.setVisibility(GONE);
     }
 
-    public void showRightButton(){
-        if (mRightButton != null)
-            mRightButton.setVisibility(VISIBLE);
-    }
-
-    public void hideRightButton(){
-        if (mRightButton != null)
-            mRightButton.setVisibility(GONE);
-    }
-
-    public void showLeftButton(){
-        if (mLeftButton != null)
-            mLeftButton.setVisibility(VISIBLE);
-    }
-
-    public void hideLeftButton(){
-        if (mLeftButton != null)
-            mLeftButton.setVisibility(GONE);
-    }
+//    public void showRightButton(){
+//        if (mRightButton != null)
+//            mRightButton.setVisibility(VISIBLE);
+//    }
+//
+//    public void hideRightButton(){
+//        if (mRightButton != null)
+//            mRightButton.setVisibility(GONE);
+//    }
+//
+//    public void showLeftButton(){
+//        if (mLeftButton != null)
+//            mLeftButton.setVisibility(VISIBLE);
+//    }
+//
+//    public void hideLeftButton(){
+//        if (mLeftButton != null)
+//            mLeftButton.setVisibility(GONE);
+//    }
 }

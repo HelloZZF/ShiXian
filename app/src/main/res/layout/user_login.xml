@@ -10,6 +10,7 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
+        android:id="@+id/tabll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -44,8 +45,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/user_viewpager"
-        android:paddingTop="20dp"
-        android:layout_below="@id/user_tablayout"
+        android:layout_below="@id/tabll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

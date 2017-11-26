@@ -13,10 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.shixian.R;
-import com.jude.rollviewpager.OnItemClickListener;
-import com.jude.rollviewpager.RollPagerView;
-import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
 import java.util.List;
 
@@ -210,42 +214,51 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class Item6Holder extends RecyclerView.ViewHolder {
 
-        private RollPagerView pagerView;
+
+        private SliderLayout mSliderLayout;
 
         public Item6Holder (View view, final Context context){
             super(view);
-            pagerView = (RollPagerView) view.findViewById(R.id.rollPagerView);
-
-            pagerView.setAdapter(new MyPagerAdapter());
-
-            pagerView.setOnItemClickListener(new OnItemClickListener() {
+            mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
+            DefaultSliderView defaultSliderView1 = new DefaultSliderView(context);
+            DefaultSliderView defaultSliderView2 = new DefaultSliderView(context);
+            DefaultSliderView defaultSliderView3 = new DefaultSliderView(context);
+            defaultSliderView1
+                    .image(R.drawable.item6_1);
+            mSliderLayout.addSlider(defaultSliderView1);
+            defaultSliderView1.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                 @Override
-                public void onItemClick(int position) {
-                    Toast.makeText(context,"111"+position, Toast.LENGTH_SHORT).show();
-
+                public void onSliderClick(BaseSliderView slider) {
+                    Toast.makeText(context, "111", Toast.LENGTH_SHORT).show();
                 }
             });
+            defaultSliderView2
+                    .image(R.drawable.item6_2);
+            mSliderLayout.addSlider(defaultSliderView2);
+            defaultSliderView2.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                @Override
+                public void onSliderClick(BaseSliderView slider) {
+                    Toast.makeText(context, "222", Toast.LENGTH_SHORT).show();
+                }
+            });
+            defaultSliderView3
+                    .image(R.drawable.item6_3);
+            mSliderLayout.addSlider(defaultSliderView3);
+            defaultSliderView3.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                @Override
+                public void onSliderClick(BaseSliderView slider) {
+                    Toast.makeText(context, "333", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+//            mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+            mSliderLayout.setCustomIndicator((PagerIndicator) view.findViewById(R.id.custom_indicator));
+//            mSliderLayout.setCustomAnimation(new DescriptionAnimation());
+            mSliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
+            mSliderLayout.setDuration(3000);
+
         }
 
-    }
-
-    public static class MyPagerAdapter extends StaticPagerAdapter {
-
-        private int[] image = {R.drawable.item6_1, R.drawable.item6_2, R.drawable.item6_3};
-
-        @Override
-        public View getView(ViewGroup container, int position) {
-            ImageView imageView = new ImageView(container.getContext());
-            imageView.setImageResource(image[position]);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            return imageView;
-        }
-
-        @Override
-        public int getCount() {
-            return image.length;
-        }
 
     }
 

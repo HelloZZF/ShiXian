@@ -1,14 +1,19 @@
 package com.example.shixian.classify;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
+import com.example.shixian.CommodityDetailsAcitivity;
 import com.example.shixian.R;
 
 import java.util.ArrayList;
@@ -32,7 +37,15 @@ public class ClassifyVpFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         GoodsAdapter goodsAdapter = new GoodsAdapter(goodsList);
+        goodsAdapter.setOnGoodsItemClickListener(new GoodsAdapter.OnGoodsItemClilckListener() {
+            @Override
+            public void OnClick(View view, int position) {
+                Intent intent = new Intent(getActivity(), CommodityDetailsAcitivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(goodsAdapter);
+
         return view;
 
     }

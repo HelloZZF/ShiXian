@@ -9,7 +9,7 @@
         android:id="@+id/home_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f1f5f6"/>
+        android:background="@color/graybg"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

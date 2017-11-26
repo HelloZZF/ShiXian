@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +19,9 @@ import java.util.List;
 public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> {
 
     private List<Goods> mgoods;
+    private OnGoodsItemClilckListener listener;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
         ImageView foodImage;
         TextView introduction;
         TextView priceText;
@@ -33,11 +35,26 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
             priceText = (TextView) view.findViewById(R.id.price);
             thoughtText = (TextView) view.findViewById(R.id.thought);
             nameText = (TextView) view.findViewById(R.id.name);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.OnClick(v, getLayoutPosition());
+                    }
+                }
+            });
         }
     }
 
     public GoodsAdapter(List<Goods> mgoods) {
         this.mgoods = mgoods;
+    }
+
+    public void setOnGoodsItemClickListener(OnGoodsItemClilckListener listener) {
+
+        this.listener = listener;
+
     }
 
     @Override
@@ -62,5 +79,11 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return mgoods.size();
+    }
+
+    public interface OnGoodsItemClilckListener{
+
+        void OnClick(View view, int position);
+
     }
 }

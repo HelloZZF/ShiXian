@@ -7,6 +7,7 @@
         <attr name="leftButtonIcon" format="reference"/>
         <attr name="isShowHomeSearchView" format="boolean"/>
         <attr name="isShowClassifySearchView" format="boolean"/>
+        <attr name="isShowTabLayout" format="boolean"/>
         
     </declare-styleable>
 </resources>

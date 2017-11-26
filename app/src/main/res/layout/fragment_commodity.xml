@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/graybg">
+
+
+    <ScrollView
+        android:id="@+id/commodity_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp">
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/commodity_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                </com.daimajia.slider.library.SliderLayout>
+
+                <com.daimajia.slider.library.Indicators.PagerIndicator
+                    android:id="@+id/commodity_custom_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    custom:selected_color="@color/green"
+                    custom:selected_height="2dp"
+                    custom:selected_padding_left="2dp"
+                    custom:selected_padding_right="2dp"
+                    custom:selected_width="16dp"
+                    custom:shape="rect"
+                    custom:unselected_color="@color/transparent3"
+                    custom:unselected_height="2dp"
+                    custom:unselected_padding_left="2dp"
+                    custom:unselected_padding_right="2dp"
+                    custom:unselected_width="16dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/commodity_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:text="糖醋排骨" />
+
+                <TextView
+                    android:id="@+id/commodity_introduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/commodity_name"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="17dp"
+                    android:text="秘制上等葫芦娃香蕉皮皮猪究极糖醋排骨" />
+
+                <TextView
+                    android:id="@+id/commodity_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/coral2"
+                    android:textStyle="bold"
+                    android:text="99¥" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/yes"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:text="做法教学"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/yes"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:text="免洗免切"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/yes"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:text="急速送达"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/oneline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="保质期："
+                            android:textColor="@color/gray2"
+                            android:textSize="17dp"/>
+
+                        <TextView
+                            android:id="@+id/Shelf_life"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="17dp"
+                            android:textColor="@color/black"
+                            android:text="2天"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="储存温度："
+                            android:textColor="@color/gray2"
+                            android:textSize="17dp"/>
+
+                        <TextView
+                            android:id="@+id/temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="17dp"
+                            android:textColor="@color/black"
+                            android:text="-2~-8℃"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/twoline"
+                    android:layout_below="@id/oneline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="净含量："
+                            android:textColor="@color/gray2"
+                            android:textSize="17dp"/>
+
+                        <TextView
+                            android:id="@+id/temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="17dp"
+                            android:textColor="@color/black"
+                            android:text="500g"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="口味："
+                            android:textColor="@color/gray2"
+                            android:textSize="17dp"/>
+
+                        <TextView
+                            android:id="@+id/temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="17dp"
+                            android:textColor="@color/black"
+                            android:text="酸甜"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/threeline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="食材："
+                        android:textColor="@color/gray2"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/material"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:lineSpacingExtra="2dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:text="哈萨克斯坦阿加勒加斯新疆维吾尔自治区乌鲁木齐美国进口上等猪排骨"/>
+
+                    <LinearLayout
+                        android:layout_below="@id/threeline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="调料："
+                            android:textSize="18dp"/>
+
+                        <TextView
+                            android:id="@+id/material"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="false"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="18dp"
+                            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fourline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="调料："
+                        android:textColor="@color/gray2"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/material"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:lineSpacingExtra="2dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:text="糖，醋，糖，醋，糖，醋，糖，醋，糖，醋，糖，醋，糖，醋"/>
+
+                    <LinearLayout
+                        android:layout_below="@id/threeline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="调料："
+                            android:textSize="18dp"/>
+
+                        <TextView
+                            android:id="@+id/material"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="false"
+                            android:layout_marginLeft="2dp"
+                            android:textSize="18dp"
+                            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <ImageButton
+            android:id="@+id/collect_button"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:src="@drawable/collect_botton"
+            android:layout_height="match_parent"
+            android:background="@color/cora3"/>
+
+        <Button
+            android:id="@+id/add_botton"
+            android:layout_weight="2.5"
+            android:layout_width="0dp"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:background="@color/coral"
+            android:layout_height="match_parent"
+            android:text="加入佳肴"/>
+
+        <Button
+            android:id="@+id/buy_button"
+            android:layout_weight="2.5"
+            android:layout_width="0dp"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:layout_height="match_parent"
+            android:text="立即购买"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
