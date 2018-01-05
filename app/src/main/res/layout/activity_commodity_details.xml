@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.shixian.myToolbar
+    <com.example.shixian.widget.myToolbar
         android:id="@+id/commodity_details_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:rightButtonIcon="@drawable/share"
         app:isShowTabLayout="true"
         >
-    </com.example.shixian.myToolbar>
+    </com.example.shixian.widget.myToolbar>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/commdetails_viewpager"

@@ -4,20 +4,16 @@ package com.example.shixian;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.shixian.adapter.ViewPagerAdapter;
+import com.example.shixian.fragment.CommodityFragment;
+import com.example.shixian.fragment.DetailsFragment;
+import com.example.shixian.fragment.EvaluationFragment;
 
 
-public class CommodityDetailsAcitivity extends AppCompatActivity {
+public class CommodityDetailsAcitivity extends BaseActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -37,10 +33,17 @@ public class CommodityDetailsAcitivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
+
     }
 
 
     private void initViewPager() {
+
+//        用inflatr得到的布局文件是重新渲染的文件，这里用fragment的getview得到的是这个碎片的view，不过报空指针。。。
+//        CommodityFragment commodityFragment = new CommodityFragment();
+//        View v = commodityFragment.getView();
+//        ScrollView scrollView = (ScrollView) v.findViewById(R.id.commodity_scroll);
+//        scrollView.setBackgroundColor(0xffc2c2c2);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CommodityFragment());

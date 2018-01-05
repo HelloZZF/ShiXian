@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DIY专区"
+            android:textColor="@color/blue3"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="12dp"
+            android:layout_centerInParent="true"/>
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="0.6dp"
+            android:background="@color/blue3"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item2_text"/>
+
+        <View
+            android:id="@+id/text2_view"
+            android:layout_width="20dp"
+            android:layout_height="0.6dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/gray"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/item2_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MORE"
+            android:textColor="@color/gray"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toLeftOf="@id/text2_view"
+            android:layout_centerInParent="true"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Item3_List"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"/>
+
+
+</LinearLayout>

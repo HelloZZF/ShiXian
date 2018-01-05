@@ -5,11 +5,24 @@
     android:layout_height="match_parent"
     >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/home_item"
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/home_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/graybg"/>
+        android:layout_height="wrap_content"
+        app:wave_color="@color/green3"
+        app:progress_colors="@array/progress_colors"
+        app:wave_height_type="normal"
+        app:wave_show="true"
+        app:overlay="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/graybg"/>
+
+    </com.cjj.MaterialRefreshLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -21,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.example.shixian.myToolbar
+        <com.example.shixian.widget.myToolbar
             android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -31,7 +44,7 @@
             app:leftButtonIcon="@drawable/foodclass"
             app:isShowHomeSearchView="true">
 
-        </com.example.shixian.myToolbar>
+        </com.example.shixian.widget.myToolbar>
 
     </LinearLayout>
 

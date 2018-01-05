@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/commdetails_tablayout"
@@ -72,7 +73,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:visibility="gone"
-        style="@android:style/Widget.Material.Toolbar.Button.Navigation"/>
+        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+        tools:targetApi="lollipop"/>
 
     <ImageButton
         android:id="@+id/toolbar_leftButton"
@@ -81,6 +83,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:visibility="gone"
-        style="@android:style/Widget.Material.Toolbar.Button.Navigation"/>
+        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+        tools:targetApi="lollipop"/>
 
 </RelativeLayout>

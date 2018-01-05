@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:background="@color/green"/>
 
-        <com.example.shixian.myToolbar
+        <com.example.shixian.widget.myToolbar
             android:id="@+id/shopcart_toolbar"
             android:layout_width="match_parent"
             android:layout_height="40dp"

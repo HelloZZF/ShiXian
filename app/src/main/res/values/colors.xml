@@ -17,7 +17,7 @@
     <color name="gray3">#bdbdbd</color>
     <color name="green">#05d712</color>
     <color name="green2">#ccdb30</color>
-    <color name="green3">#32cd32</color>
+    <color name="green3">#af32cd32</color>
     <color name="graybg">#f1f5f6</color>
     <color name="graybg2">#f0f0f0</color>
     <color name="lightgreen">#5af599</color>
@@ -26,4 +26,11 @@
     <color name="cora3">#ffa07a</color>
     <color name="coral">#ff7f50</color>
     <color name="coral2">#ff5d5e</color>
+
+    <integer-array name="progress_colors">
+        <item>@color/green</item>
+        <item>@color/green</item>
+        <item>@color/green</item>
+        <item>@color/green</item>
+    </integer-array>
 </resources>

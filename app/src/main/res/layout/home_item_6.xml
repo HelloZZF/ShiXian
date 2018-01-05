@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="猜你喜欢"
+            android:textColor="@color/red"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="12dp"
+            android:layout_centerInParent="true"/>
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="0.6dp"
+            android:background="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/item3_text"/>
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="0.6dp"
+            android:background="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/item3_text"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Item5_List"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

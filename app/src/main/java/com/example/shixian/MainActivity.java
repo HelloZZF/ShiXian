@@ -1,5 +1,6 @@
 package com.example.shixian;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -8,20 +9,19 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.shixian.classify.ClassifyFragment;
-import com.example.shixian.homepage.HomePageFragment;
-import com.example.shixian.shopcart.ShopCartFragment;
-import com.example.shixian.user.UserFragment;
-import com.example.shixian.user.UserLoginActivity;
+import com.example.shixian.adapter.ViewPagerAdapter;
+import com.example.shixian.fragment.ClassifyFragment;
+import com.example.shixian.fragment.HomePageFragment;
+import com.example.shixian.fragment.ShopCartFragment;
+import com.example.shixian.fragment.UserFragment;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ViewPager viewPager;
 
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_bottom);
         initBottomNavigationView();
         initViewPager();
-
 
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
@@ -126,16 +125,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new HomePageFragment());
         adapter.addFragment(new ClassifyFragment());
         adapter.addFragment(new ShopCartFragment());
         adapter.addFragment(new UserFragment());
+
         viewPager.setAdapter(adapter);
     }
 
 //用反射设置bottomNaviggation的动画
+    @SuppressLint("RestrictedApi")
     public static void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {
