@@ -10,6 +10,7 @@ import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
 import com.example.shixian.bean.HomeItem3;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,10 +46,13 @@ public class cell_home_item3i extends RVBaseCell<List<HomeItem3>>{
     @Override
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
 
-        holder.getImageView(R.id.user_image).setImageResource(item3s.get(position).getUserImageId());
-        holder.getImageView(R.id.food_image).setImageResource(item3s.get(position).getFoodImageId());
-        holder.getTextView(R.id.user_name).setText(item3s.get(position).getUserName());
-        holder.getTextView(R.id.food_name).setText(item3s.get(position).getFoodName());
+        Picasso.with(mContext).load(item3s.get(position).getIcon())
+                .into(holder.getImageView(R.id.user_image));
+        Picasso.with(mContext).load(item3s.get(position).getImageurl())
+                .into(holder.getImageView(R.id.food_image));
+
+        holder.getTextView(R.id.user_name).setText(item3s.get(position).getName());
+        holder.getTextView(R.id.food_name).setText(item3s.get(position).getFoodname());
 
     }
 }

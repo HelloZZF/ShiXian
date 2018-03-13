@@ -86,7 +86,7 @@
                 android:layout_marginLeft="150dp"
                 android:layout_marginBottom="3dp"
                 android:backgroundTint="@color/gray"
-                android:background="@drawable/go"/>
+                android:background="@drawable/more"/>
 
         </RelativeLayout>
 
@@ -138,7 +138,7 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginLeft="150dp"
                 android:backgroundTint="@color/gray"
-                android:background="@drawable/go" />
+                android:background="@drawable/more" />
 
         </RelativeLayout>
 

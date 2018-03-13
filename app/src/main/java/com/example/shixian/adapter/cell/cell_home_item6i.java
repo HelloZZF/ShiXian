@@ -10,6 +10,8 @@ import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
 import com.example.shixian.bean.HomeItem6;
+import com.example.shixian.bean.Wares;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -17,15 +19,15 @@ import java.util.List;
  * Created by admin on 2017/12/31.
  */
 
-public class cell_home_item6i extends RVBaseCell<List<HomeItem6>> {
+public class cell_home_item6i extends RVBaseCell<List<Wares>> {
 
     public static final int Type = 61;
     private Context mContext;
-    private List<HomeItem6> item5s;
+    private List<Wares> item6s;
 
-    public cell_home_item6i(List<HomeItem6> homeItem5s) {
-        super(homeItem5s);
-        this.item5s = homeItem5s;
+    public cell_home_item6i(List<Wares> homeItem6s) {
+        super(homeItem6s);
+        this.item6s = homeItem6s;
     }
 
     @Override
@@ -45,9 +47,11 @@ public class cell_home_item6i extends RVBaseCell<List<HomeItem6>> {
     @Override
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
 
-        holder.getImageView(R.id.home_food_image).setImageResource(item5s.get(position).getHomeFoodImageId());
-        holder.getTextView(R.id.home_food_name).setText(item5s.get(position).getHomeFoodName());
-        holder.getTextView(R.id.home_food_price).setText(item5s.get(position).getHomeFoodPrice());
+        Picasso.with(mContext).load(item6s.get(position).getImageurl())
+                .into(holder.getImageView(R.id.home_food_image));
+        holder.getTextView(R.id.home_food_name).setText(item6s.get(position).getName());
+        holder.getTextView(R.id.home_food_price).setText(item6s.get(position).getPrice()+"¥");
+        holder.getTextView(R.id.food_evaluation).setText("好评:"+item6s.get(position).getThought());
 
     }
 }

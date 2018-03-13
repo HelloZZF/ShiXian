@@ -50,7 +50,7 @@ public class EvaluationFragment extends BaseFragment {
     private void initEvaluation() {
 
         for (int i = 0; i < 10; i++){
-            Evaluation evaluation = new Evaluation(R.drawable.item3_1, "中华小当家","大家好才是真的好，贼好吃，巨好吃，超好吃，真好吃！","2017/11/16");
+            Evaluation evaluation = new Evaluation(R.drawable.userimage, "中华小当家","大家好才是真的好，贼好吃，巨好吃，超好吃，真好吃！","2017/11/16");
             evaluations.add(evaluation);
         }
 

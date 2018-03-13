@@ -2,86 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-    <ImageView
-        android:id="@+id/shopcart_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:tint="#eaf0f0"
-        android:layout_below="@id/shopcart_toolbar"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="170dp"/>
-
-    <TextView
-        android:id="@+id/shopcart_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="购物车为空"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/shopcart_image" />
+    android:background="@color/bgclock"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/shopcart_ll"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:layout_alignParentBottom="true">
-
-        <RadioButton
-            android:id="@+id/shopcart_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="全选"
-            android:layout_marginLeft="7dp"
-            android:textSize="23dp"
-            android:layout_gravity="center_vertical"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="合计:"
-            android:layout_marginLeft="90dp"
-            android:textSize="17dp"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/shopcart_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff5d5e"
-            android:text="0¥"
-            android:layout_marginLeft="5dp"
-            android:textSize="20dp"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/shopcart_botton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ff5d5e"
-            android:layout_marginLeft="5dp"
-            android:text="结算"
-            android:textColor="#fff"
-            android:textSize="25dp"
-            android:layout_gravity="center_vertical"/>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/shopcart_ll"
-        android:background="#eaf0f0"/>
-
-    <LinearLayout
+        android:id="@+id/cart_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -89,7 +14,7 @@
         <View
             android:id="@+id/shop_StatusbarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:background="@color/green"/>
 
         <com.example.shixian.widget.myToolbar
@@ -99,9 +24,94 @@
             android:background="@color/green"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="我的佳肴"/>
+            app:title="我的佳肴" />
 
     </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/cart_head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/cart_head"
+                android:id="@+id/cart_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="58dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/shopcart_ll"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/transparent4"
+        android:layout_alignParentBottom="true">
+
+        <CheckBox
+            android:id="@+id/shopcart_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="全选"
+            android:textSize="20dp"
+            android:textColor="@color/gray3"
+            android:checked="false"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/together"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合计:"
+            android:layout_marginLeft="80dp"
+            android:textSize="17dp"
+            android:textColor="@color/gray3"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/shopcart_price"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="0¥"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/order_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/green4"
+            android:layout_marginLeft="5dp"
+            android:text="结算"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

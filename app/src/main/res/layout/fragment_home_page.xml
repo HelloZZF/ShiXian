@@ -11,9 +11,10 @@
         android:layout_height="wrap_content"
         app:wave_color="@color/green3"
         app:progress_colors="@array/progress_colors"
+        app:progress_size_type="normal"
         app:wave_height_type="normal"
         app:wave_show="true"
-        app:overlay="true">
+        app:overlay="false">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_item"

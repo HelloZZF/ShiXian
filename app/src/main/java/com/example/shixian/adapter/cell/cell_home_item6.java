@@ -13,6 +13,7 @@ import com.example.shixian.adapter.base.RVSimpleAdapter;
 import com.example.shixian.bean.HomeItem6;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
+import com.example.shixian.bean.Wares;
 
 import java.util.List;
 
@@ -20,15 +21,15 @@ import java.util.List;
  * Created by admin on 2017/12/30.
  */
 
-public class cell_home_item6 extends RVBaseCell<List<HomeItem6>> {
+public class cell_home_item6 extends RVBaseCell<List<Wares>> {
 
     public static final int Type = 6;
     private Context mContext;
-    private List<HomeItem6> item5s;
+    private List<Wares> item6s;
 
-    public cell_home_item6(List<HomeItem6> item5s) {
-        super(item5s);
-        this.item5s = item5s;
+    public cell_home_item6(List<Wares> item6s) {
+        super(item6s);
+        this.item6s = item6s;
     }
 
 
@@ -48,7 +49,7 @@ public class cell_home_item6 extends RVBaseCell<List<HomeItem6>> {
         recyclerView.setLayoutManager(gridLayoutManager);
 
         RVSimpleAdapter Item5adapter = new RVSimpleAdapter();
-        Item5adapter.OnlyOneItem(new cell_home_item6i(item5s), item5s.size());
+        Item5adapter.OnlyOneItem(new cell_home_item6i(item6s), item6s.size());
         recyclerView.setAdapter(Item5adapter);
 
         return holder;

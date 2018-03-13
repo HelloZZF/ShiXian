@@ -5,4 +5,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorPrimary">@color/green4</item>
+        <item name="android:colorPrimaryDark">@color/green4</item>
+        <item name="android:colorAccent">@color/green4</item>
+    </style>
+
 </resources>

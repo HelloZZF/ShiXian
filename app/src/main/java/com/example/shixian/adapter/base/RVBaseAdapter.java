@@ -39,6 +39,7 @@ public   abstract class RVBaseAdapter<C extends RVBaseCell>  extends RecyclerVie
 
     @Override
     public RVBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         for(int i=0;i<getItemCount();i++){
             if(viewType == mData.get(i).getItemType()){
                 return mData.get(i).onCreateViewHolder(parent,viewType,mListener);
@@ -96,6 +97,7 @@ public   abstract class RVBaseAdapter<C extends RVBaseCell>  extends RecyclerVie
         for (int i = 0; i < size; i++){
             mData.add(cell);
         }
+        notifyItemRangeChanged(0,mData.size());
     }
 
     /**

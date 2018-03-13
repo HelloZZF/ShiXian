@@ -1,15 +1,18 @@
 package com.example.shixian;
 
 import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,6 +23,7 @@ import com.example.shixian.fragment.ShopCartFragment;
 import com.example.shixian.fragment.UserFragment;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
@@ -27,9 +31,9 @@ public class MainActivity extends BaseActivity {
 
     private MenuItem menuItem;
 
-    private static int whetherLogin = 0;
-
     private BottomNavigationView bottomNavigationView;
+
+    private ShopCartFragment mShopCartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +41,18 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_bottom);
-        initBottomNavigationView();
         initViewPager();
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+        initBottomNavigationView();
+        setStatusbar();
 
         //从一个活动的Fragment跳转到另一个活动的Fragment
-        int id = getIntent().getIntExtra("id",0);
-        if (id == 1) {
+        int id = getIntent().getIntExtra("VPid",0);
+        if (id == 3) {
             viewPager.setCurrentItem(3);
+        }else if (id == 2){
+            viewPager.setCurrentItem(2);
         }
+
 
     }
 
@@ -69,14 +71,22 @@ public class MainActivity extends BaseActivity {
                                 viewPager.setCurrentItem(1);
                                 break;
                             case R.id.menu_shop_cart:
-                                viewPager.setCurrentItem(2);
+                                if (ShiXianApplication.getInstance().getUser() == null){
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.putExtra("VPid", 2);
+                                    startActivity(intent, true);
+                                }else{
+                                    if (mShopCartFragment != null){
+                                        viewPager.setCurrentItem(2);
+                                        mShopCartFragment.refData();
+                                    }
+                                }
                                 break;
                             case R.id.menu_user:
-                                if (whetherLogin == 0){
-                                    whetherLogin = 1;
-                                    bottomNavigationView.getMenu().getItem(3).setChecked(true);
-                                    Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
-                                    startActivity(intent);
+                                if (ShiXianApplication.getInstance().getUser() == null){
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.putExtra("VPid", 3);
+                                    startActivity(intent, true);
                                 }else{
                                     viewPager.setCurrentItem(3);
                                 }
@@ -130,7 +140,8 @@ public class MainActivity extends BaseActivity {
 
         adapter.addFragment(new HomePageFragment());
         adapter.addFragment(new ClassifyFragment());
-        adapter.addFragment(new ShopCartFragment());
+        mShopCartFragment = new ShopCartFragment();
+        adapter.addFragment(mShopCartFragment);
         adapter.addFragment(new UserFragment());
 
         viewPager.setAdapter(adapter);

@@ -14,6 +14,10 @@ import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
+import com.example.shixian.bean.HomeItem1;
+import com.example.shixian.bean.HomeItem3;
+
+import java.util.List;
 
 /**
  * Created by admin on 2017/12/30.
@@ -27,9 +31,11 @@ public class cell_home_item1 extends RVBaseCell<Object> {
     private DefaultSliderView defaultSliderView2;
     private DefaultSliderView defaultSliderView3;
     private Context mContext;
+    private List<HomeItem1> item1s;
 
-    public cell_home_item1(Object o) {
-        super(o);
+    public cell_home_item1(List<HomeItem1> item1s) {
+        super(item1s);
+        this.item1s = item1s;
     }
 
     @Override
@@ -84,13 +90,13 @@ public class cell_home_item1 extends RVBaseCell<Object> {
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
 
         defaultSliderView1
-                .image(R.drawable.item6_1);
+                .image(item1s.get(0).getImageurl());
 
         defaultSliderView2
-                .image(R.drawable.item6_2);
+                .image(item1s.get(1).getImageurl());
 
         defaultSliderView3
-                .image(R.drawable.item6_3);
+                .image(item1s.get(2).getImageurl());
 
     }
 }

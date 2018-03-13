@@ -9,6 +9,10 @@ import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
+import com.example.shixian.bean.HomeItem1;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 /**
  * Created by admin on 2017/12/31.
@@ -18,9 +22,11 @@ public class cell_home_item5 extends RVBaseCell<Object>{
 
     public static final int Type = 5;
     private Context mContext;
+    private List<HomeItem1> item5s;
 
-    public cell_home_item5(Object o) {
-        super(o);
+    public cell_home_item5(List<HomeItem1> item5s) {
+        super(item5s);
+        this.item5s = item5s;
     }
 
     @Override
@@ -40,5 +46,16 @@ public class cell_home_item5 extends RVBaseCell<Object>{
     @Override
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
 
+        Picasso.with(mContext).load(item5s.get(0).getImageurl())
+                .into(holder.getImageView(R.id.image_top));
+
+        Picasso.with(mContext).load(item5s.get(1).getImageurl())
+                .into(holder.getImageView(R.id.image_left));
+
+        Picasso.with(mContext).load(item5s.get(2).getImageurl())
+                .into(holder.getImageView(R.id.image_head));
+
+        Picasso.with(mContext).load(item5s.get(3).getImageurl())
+                .into(holder.getImageView(R.id.image_bottom));
     }
 }

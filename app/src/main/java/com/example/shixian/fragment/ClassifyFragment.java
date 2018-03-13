@@ -1,12 +1,14 @@
 package com.example.shixian.fragment;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.shixian.R;
+import com.example.shixian.widget.myToolbar;
 
 /**
  * Created by admin on 2017/9/2.
@@ -28,22 +31,24 @@ public class ClassifyFragment extends BaseFragment {
     private ScrollView scrollView;
     private int scrollViewWidth = 0, scrollViewMiddle = 0;
     private ViewPager wares_pager;
-    private int currentItem = 0;
+    private int currentItem;
     private ShopAdapter shopAdapter;
     private View statusBar;
     private LinearLayout toolsLayout;
     private LayoutInflater mInflater;
+    private myToolbar mToolbar;
 
     @Override
     public View CreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_classify, container, false);
         mInflater = LayoutInflater.from(getContext());
+        mToolbar = view.findViewById(R.id.classify_toolbar);
         scrollView = (ScrollView) view.findViewById(R.id.classify_scrollview);
         shopAdapter = new ShopAdapter(getChildFragmentManager());
         wares_pager = (ViewPager) view.findViewById(R.id.goods_pager);
         statusBar = view.findViewById(R.id.classify_StatusbarView);
-        toolsList = new String[]{"推荐","销量排行","每周新品","荤菜","素菜","荤素搭配","汤类","家常菜","儿童专区","水产海鲜","点心速食","当季蔬菜","当地特色"};
+        toolsList = new String[]{"食鲜精选","独家秘制","每周新品","无肉不欢","田园时蔬","玲珑小炒","养生汤羹","实惠家常","儿童专区","水产海鲜","点心面食","当地特色","经典套餐"};
         toolsLayout = (LinearLayout) view.findViewById(R.id.tools);
         toolsTextViews = new TextView[toolsList.length];
         views = new View[toolsList.length];
@@ -54,11 +59,17 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     public void init() {
 
-        initClassify();
-        changeTextColor(2);
         initViewPager();
+        initClassify();
+        initToolbar();
         FitsStatusBar(statusBar);
 
+    }
+
+    public void initToolbar(){
+        //避免从一个活动返回SearchView重新获取焦点或者一加载Fragment就获取焦点
+        mToolbar.getClassifySearView().setFocusable(false);
+        mToolbar.getClassifySearView().setFocusableInTouchMode(false);
     }
 
     private void initClassify() {
@@ -78,14 +89,24 @@ public class ClassifyFragment extends BaseFragment {
             toolsTextViews[i] = textView;
             views[i] = fcview;
         }
+        //默认当前页为第二页
+        currentItem = 2;
+        wares_pager.setCurrentItem(2);
+        changeTextColor(2);
     }
 
     private void initViewPager() {
 
         wares_pager.setAdapter(shopAdapter);
-        wares_pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        wares_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
             @Override
             public void onPageSelected(int position) {
+
                 if (wares_pager.getCurrentItem() != position) {
                     wares_pager.setCurrentItem(position);
                 }
@@ -97,13 +118,11 @@ public class ClassifyFragment extends BaseFragment {
             }
 
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
+
     }
 
 
@@ -149,7 +168,7 @@ public class ClassifyFragment extends BaseFragment {
 
         @Override
         public Fragment getItem(int position) {
-            Fragment fragment = new ClassifyVpFragment();
+            Fragment fragment = ClassifyVpFragment.newInstance(position);
             return fragment;
         }
 

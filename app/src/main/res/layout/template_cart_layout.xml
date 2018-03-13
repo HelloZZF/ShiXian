@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_margin="5dp">
+
+
+    <ImageView
+        android:id="@+id/foodimage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/check_button"
+        android:layout_marginRight="20dp"
+        android:scaleType="fitXY"
+        />
+
+    <CheckBox
+        android:id="@+id/check_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/foodimage"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="5dp"
+        android:text="啊啊啊啊"
+        android:textSize="19dp"/>
+
+    <TextView
+        android:id="@+id/introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/foodimage"
+        android:layout_below="@id/name"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:text="啊啊啊啊啊啊"
+        android:textSize="15dp"
+        android:textColor="@color/gray2"/>
+
+    <com.example.shixian.widget.NumberAddSubView
+        android:id="@+id/add_sub_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentRight="true"
+        app:minValue="1">
+
+    </com.example.shixian.widget.NumberAddSubView>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/foodimage"
+        android:layout_marginTop="82dp"
+        android:layout_marginLeft="7dp"
+        android:textSize="18dp"
+        android:text="20¥"
+        android:textColor="@color/coral2"/>
+
+
+</RelativeLayout>

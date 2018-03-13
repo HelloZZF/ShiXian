@@ -12,12 +12,15 @@
     <color name="transparent">#5000</color>
     <color name="transparent2">#00000000</color>
     <color name="transparent3">#2000</color>
+    <color name="transparent4">#7000</color>
     <color name="gray">#C2C2C2</color>
     <color name="gray2">#a9a9a9</color>
     <color name="gray3">#bdbdbd</color>
+    <color name="gray4">#808080</color>
     <color name="green">#05d712</color>
     <color name="green2">#ccdb30</color>
     <color name="green3">#af32cd32</color>
+    <color name="green4">#56d176</color>
     <color name="graybg">#f1f5f6</color>
     <color name="graybg2">#f0f0f0</color>
     <color name="lightgreen">#5af599</color>
@@ -26,6 +29,7 @@
     <color name="cora3">#ffa07a</color>
     <color name="coral">#ff7f50</color>
     <color name="coral2">#ff5d5e</color>
+    <color name="bgclock">#f1f5f6</color>
 
     <integer-array name="progress_colors">
         <item>@color/green</item>

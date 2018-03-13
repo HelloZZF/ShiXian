@@ -1,12 +1,9 @@
 package com.example.shixian.fragment;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shixian.R;
+import com.example.shixian.ShiXianApplication;
+import com.example.shixian.bean.User;
 import com.example.shixian.utils.FastBlurUtil;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 
 /**
@@ -46,6 +47,7 @@ public class UserFragment extends BaseFragment {
     private ImageView itemicon7s;
     private ImageView itemicon8;
     private ImageView itemicon8s;
+    private User mUser;
     private LinearLayout useritem1;
     private View statusBar;
 
@@ -75,20 +77,25 @@ public class UserFragment extends BaseFragment {
         itemicon8 = (ImageView) view.findViewById(R.id.item_icon8);
         itemicon8s = (ImageView) view.findViewById(R.id.item_icon8s);
         statusBar = view.findViewById(R.id.user_StatusbarView);
+        mUser = ShiXianApplication.getInstance().getUser();
 
         useritem1 = (LinearLayout) view.findViewById(R.id.user_item1);
         useritem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getActivity(), "哈哈哈哈哈", Toast.LENGTH_SHORT).show();
             }
         });
 
+
         return view;
     }
 
+
     @Override
     public void init() {
+
         initUser();
         initItem();
         BlurImage();
@@ -99,17 +106,46 @@ public class UserFragment extends BaseFragment {
     private void BlurImage() {
         //背景图片虚化
         Resources res = getResources();
-        Bitmap scaledBitmap = BitmapFactory.decodeResource(res, R.drawable.userimage);
-        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 3);
-        userbg.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        userbg.setImageBitmap(blurBitmap);
+        //Bitmap scaledBitmap = BitmapFactory.decodeResource(res, R.drawable.userbg);
+        //用Picsso获取网络图片的Bitmap
+
+        if (!"".equals(mUser.getIcon())){
+            Picasso.with(getContext()).load(mUser.getIcon()).into(new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    Bitmap blurBitmap = FastBlurUtil.toBlur(bitmap, 2);
+                    userbg.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    userbg.setImageBitmap(blurBitmap);
+                }
+
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
+
+                }
+
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                }
+            });
+        }
+
+
+//        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 3);
+//        userbg.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//        userbg.setImageBitmap(blurBitmap);
     }
 
     public void initUser() {
-        usericon.setImageResource(R.drawable.go);
-        userimage.setImageResource(R.drawable.userimage);
-        username.setText("过完冬的叶");
-        userscore.setText("28");
+
+        if (mUser != null){
+            usericon.setImageResource(R.drawable.more);
+            if (!"".equals(mUser.getIcon()))
+                Picasso.with(getContext()).load(mUser.getIcon()).into(userimage);
+            username.setText(mUser.getName());
+            userscore.setText(mUser.getScroe());
+        }
+
     }
 
     public void initItem() {
@@ -121,25 +157,15 @@ public class UserFragment extends BaseFragment {
         itemicon6.setImageResource(R.drawable.itemicon6);
         itemicon7.setImageResource(R.drawable.itemicon7);
         itemicon8.setImageResource(R.drawable.itemicon8);
-        itemicon1s.setImageResource(R.drawable.go);
-        itemicon2s.setImageResource(R.drawable.go);
-        itemicon3s.setImageResource(R.drawable.go);
-        itemicon4s.setImageResource(R.drawable.go);
-        itemicon5s.setImageResource(R.drawable.go);
-        itemicon6s.setImageResource(R.drawable.go);
-        itemicon7s.setImageResource(R.drawable.go);
-        itemicon8s.setImageResource(R.drawable.go);
+        itemicon1s.setImageResource(R.drawable.more);
+        itemicon2s.setImageResource(R.drawable.more);
+        itemicon3s.setImageResource(R.drawable.more);
+        itemicon4s.setImageResource(R.drawable.more);
+        itemicon5s.setImageResource(R.drawable.more);
+        itemicon6s.setImageResource(R.drawable.more);
+        itemicon7s.setImageResource(R.drawable.more);
+        itemicon8s.setImageResource(R.drawable.more);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        initToolbar();
-    }
 
-//    public Toolbar initToolbar() {
-//        AppCompatActivity mAppCompatActivity = (AppCompatActivity) activity;
-//        Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.user_toolbar);
-//        return toolbar;
-//    }
 }

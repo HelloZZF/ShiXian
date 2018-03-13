@@ -6,35 +6,40 @@ package com.example.shixian.bean;
 
 public class HomeItem3 {
 
-    private String userName;
+    private String name;
+    private String foodname;
+    private String icon;
+    private String imageurl;
 
-    private String foodName;
-
-    private int UserImageId;
-
-    private int FoodImageId;
-
-    public HomeItem3(String userName, String foodName, int UserImageId, int FoodImageId) {
-        this.userName = userName;
-        this.foodName = foodName;
-        this.UserImageId = UserImageId;
-        this.FoodImageId = FoodImageId;
+    public String getName() {
+        return name;
     }
 
-    public int getFoodImageId() {
-        return FoodImageId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getUserImageId() {
-        return UserImageId;
+    public String getFoodname() {
+        return foodname;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public void setFoodname(String foodname) {
+        this.foodname = foodname;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getIcon() {
+        return icon;
     }
 
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
 }

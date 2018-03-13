@@ -1,7 +1,7 @@
 package com.example.shixian.bean;
 
 /**
- * Created by admin on 2017/7/25.
+ * Created by zzf on 2018/1/28.
  */
 
 public class Ware {
@@ -12,17 +12,17 @@ public class Ware {
 
     private String name;
 
-    private String Introduction;
+    private String introduction;
 
-    private int FoodImageId;
+    private String imageurl;
 
 
-    public Ware(String price, String thought, String name, int foodImageId, String Introduction) {
+    public Ware(String price, String thought, String name, String foodImageId, String Introduction) {
         this.price = price;
         this.thought = thought;
         this.name = name;
-        this.FoodImageId = foodImageId;
-        this.Introduction = Introduction;
+        this.imageurl = foodImageId;
+        this.introduction = Introduction;
     }
 
     public String getPrice() {
@@ -37,11 +37,11 @@ public class Ware {
         return name;
     }
 
-    public int getFoodImageId() {
-        return FoodImageId;
+    public String getFoodImageId() {
+        return imageurl;
     }
 
     public String getIntroduction() {
-        return Introduction;
+        return introduction;
     }
 }

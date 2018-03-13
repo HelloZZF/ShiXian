@@ -1,26 +1,29 @@
 package com.example.shixian.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by admin on 2018/1/17.
  */
-public class Wares implements Serializable {
 
+public class Wares implements Serializable{
 
-    private Long id;
+    private String id;
     private String name;
-    private String imgUrl;
-    private String description;
-    private Float price;
+    private String introduction;
+    private String thought;
+    private String price;
+    private String imageurl;
+    private String sort;
+    private String type;
+    private String menu_id;
 
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -32,27 +35,59 @@ public class Wares implements Serializable {
         this.name = name;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
-    public String getDescription() {
-        return description;
+    public String getThought() {
+        return thought;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setThought(String thought) {
+        this.thought = thought;
     }
 
-    public Float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMenu_id() {
+        return menu_id;
+    }
+
+    public void setMenu_id(String menu_id) {
+        this.menu_id = menu_id;
     }
 }

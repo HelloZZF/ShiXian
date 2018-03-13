@@ -1,6 +1,7 @@
 package com.example.shixian.http;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -29,8 +30,9 @@ public class OkHttpManager {
     public static final int TOKEN_EXPIRE=403; // token 过期
 
     private OkHttpManager(){
+
         initOkHttp();
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
         gson = new Gson();
     }
 

@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -97,8 +98,8 @@ public class myToolbar extends Toolbar{
             mTextTitle = (TextView) mView.findViewById(R.id.toolbar_title);
             homeSearView = (SearchView) mView.findViewById(R.id.home_searchView);
             classifySearView = (SearchView) mView.findViewById(R.id.classify_searchView);
-            mRightButton = (ImageButton) mView.findViewById(R.id.toolbar_rightButton);
-            mLeftButton = (ImageButton) mView.findViewById(R.id.toolbar_leftButton);
+            mRightButton = mView.findViewById(R.id.toolbar_rightButton);
+            mLeftButton = mView.findViewById(R.id.toolbar_leftButton);
             mTabLayout = (TabLayout) mView.findViewById(R.id.commdetails_tablayout);
 
             LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
@@ -109,10 +110,22 @@ public class myToolbar extends Toolbar{
 
     }
 
+    public ImageButton getRightButton(){
+        return mRightButton;
+    }
+
     public void setRightButtonIcon(Drawable icon){
 
         if (mRightButton != null) {
             mRightButton.setImageDrawable(icon);
+            mRightButton.setVisibility(VISIBLE);
+        }
+    }
+
+    public void setRightButtonIcon(int icon){
+
+        if (mRightButton != null) {
+            mRightButton.setImageResource(icon);
             mRightButton.setVisibility(VISIBLE);
         }
     }
@@ -123,10 +136,22 @@ public class myToolbar extends Toolbar{
 
     }
 
+    public ImageButton getLeftButton(){
+        return mLeftButton;
+    }
+
     public void setLeftButtonIcon(Drawable icon){
 
         if (mLeftButton != null) {
             mLeftButton.setImageDrawable(icon);
+            mLeftButton.setVisibility(VISIBLE);
+        }
+    }
+
+    public void setLeftButtonIcon(int icon){
+
+        if (mLeftButton != null) {
+            mLeftButton.setImageResource(icon);
             mLeftButton.setVisibility(VISIBLE);
         }
     }
@@ -188,6 +213,14 @@ public class myToolbar extends Toolbar{
     public void hideTitleView(){
         if (mTextTitle != null)
             mTextTitle.setVisibility(GONE);
+    }
+
+    public SearchView getHomeSearView(){
+        return homeSearView;
+    }
+
+    public SearchView getClassifySearView(){
+        return classifySearView;
     }
 
 //    public void showRightButton(){

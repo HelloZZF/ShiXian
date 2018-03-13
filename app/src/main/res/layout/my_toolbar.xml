@@ -33,7 +33,7 @@
 
     <android.support.v7.widget.SearchView
         android:id="@+id/classify_searchView"
-        android:layout_width="290dp"
+        android:layout_width="302dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/classify_search_shape"
@@ -45,13 +45,13 @@
 
     <android.support.v7.widget.SearchView
         android:id="@+id/home_searchView"
-        android:layout_width="220dp"
+        android:layout_width="270dp"
         android:layout_height="30dp"
         android:layout_centerInParent="true"
         android:background="@drawable/home_search_shape"
         app:searchIcon="@drawable/searchicon"
         app:closeIcon="@drawable/delect"
-        app:defaultQueryHint="请输入菜品或用户"
+        app:defaultQueryHint="   请输入菜品或用户"
         app:iconifiedByDefault="false"
         android:visibility="gone"/>
 
@@ -60,7 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/toolbar_leftButton"
         android:layout_gravity="center"
+        android:layout_centerVertical="true"
         android:gravity="center"
         android:textColor="#fff"
         android:textSize="20sp"
@@ -68,21 +70,23 @@
 
     <ImageButton
         android:id="@+id/toolbar_rightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:visibility="gone"
+        android:layout_marginRight="5dp"
         style="@android:style/Widget.Material.Toolbar.Button.Navigation"
         tools:targetApi="lollipop"/>
 
     <ImageButton
         android:id="@+id/toolbar_leftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:visibility="gone"
+        android:layout_marginLeft="5dp"
         style="@android:style/Widget.Material.Toolbar.Button.Navigation"
         tools:targetApi="lollipop"/>
 
