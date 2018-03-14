@@ -7,11 +7,13 @@
     android:gravity="center_horizontal"
     android:background="@drawable/selector_number_add_sub">
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_sub"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:background="@drawable/bg_btn_style_white"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/sub"
+        android:tint="@color/green4"
+        android:background="@drawable/bg_btn_style_cart"
         android:text="-"/>
 
     <TextView
@@ -22,11 +24,13 @@
         android:minWidth="100dp"
         android:gravity="center"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_add"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:background="@drawable/bg_btn_style_white"
-        android:text="+"/>
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/add"
+        android:tint="@color/green4"
+        android:background="@drawable/bg_btn_style_cart"
+        />
 
 </LinearLayout>

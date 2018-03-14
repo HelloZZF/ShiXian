@@ -53,8 +53,9 @@ public class ClassifyVpFragment extends BaseFragment {
     private RVSimpleAdapter wareAdapter;
     private MaterialRefreshLayout mRefreshLayout;
     private int category;
-    private int pagesize = 4;
+    private int pagesize = 5;
     private int curpage = 1;
+    private int flag = 1;
     private int BeforeWaresSize;
 
     private  static final int STATE_NORMAL = 0;
@@ -107,8 +108,8 @@ public class ClassifyVpFragment extends BaseFragment {
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
                 LoadMore();
-                if (curpage > 20){
-
+                if (curpage > 20 && flag == 1){
+                    flag = 0;
                     Toast.makeText(getContext(), "我是有底线的", Toast.LENGTH_SHORT).show();
                 }
                 //在这里也加上停止刷新是因为随着curpage的不断增大，大于2之后数据库返回的数据就为空了

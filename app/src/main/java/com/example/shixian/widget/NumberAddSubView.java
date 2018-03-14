@@ -1,5 +1,6 @@
 package com.example.shixian.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,8 +29,8 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
     public static final int DEFAULT_MIN = 0;
 
     private TextView mEtxtNum;
-    private Button mBtnAdd;
-    private Button mBtnSub;
+    private ImageButton mBtnAdd;
+    private ImageButton mBtnSub;
 
     private OnButtonClickListener mOnButtonClickListener;
     private LayoutInflater mInflater;
@@ -46,6 +48,7 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
         this(context, attrs, 0);
     }
 
+    @SuppressLint("RestrictedApi")
     public NumberAddSubView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -54,30 +57,30 @@ public class NumberAddSubView extends LinearLayout implements View.OnClickListen
 
         if (attrs != null){
 
-            final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
+            @SuppressLint("RestrictedApi") final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
                     R.styleable.NumberAddSubView, defStyleAttr, 0);
 
-            int val = a.getInt(R.styleable.NumberAddSubView_value, 0);
+            @SuppressLint("RestrictedApi") int val = a.getInt(R.styleable.NumberAddSubView_value, 0);
             setValue(val);
 
-            int maxVal = a.getInt(R.styleable.NumberAddSubView_maxValue, 0);
+            @SuppressLint("RestrictedApi") int maxVal = a.getInt(R.styleable.NumberAddSubView_maxValue, 0);
             if (maxVal != 0)
                 setMaxValue(maxVal);
 
-            int minVal = a.getInt(R.styleable.NumberAddSubView_minValue, 0);
+            @SuppressLint("RestrictedApi") int minVal = a.getInt(R.styleable.NumberAddSubView_minValue, 0);
             if (minVal != 0)
                 setMinValue(minVal);
 
-            Drawable etBackground = a.getDrawable(R.styleable.NumberAddSubView_editBackground);
+            @SuppressLint("RestrictedApi") Drawable etBackground = a.getDrawable(R.styleable.NumberAddSubView_editBackground);
             if(etBackground!=null)
                 setEditTextBackground(etBackground);
 
 
-            Drawable buttonAddBackground = a.getDrawable(R.styleable.NumberAddSubView_buttonAddBackgroud);
+            @SuppressLint("RestrictedApi") Drawable buttonAddBackground = a.getDrawable(R.styleable.NumberAddSubView_buttonAddBackgroud);
             if(buttonAddBackground!=null)
                 setButtonAddBackgroud(buttonAddBackground);
 
-            Drawable buttonSubBackground = a.getDrawable(R.styleable.NumberAddSubView_buttonSubBackgroud);
+            @SuppressLint("RestrictedApi") Drawable buttonSubBackground = a.getDrawable(R.styleable.NumberAddSubView_buttonSubBackgroud);
             if(buttonSubBackground!=null)
                 setButtonSubBackgroud(buttonSubBackground);
 

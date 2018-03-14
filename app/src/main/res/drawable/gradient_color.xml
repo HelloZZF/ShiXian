@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="rectangle">
+
+    <!--渐变色-->
+
+    <!--0，90，180从左到右渐变，270从上到下渐变）默认从左到右-->
+    <!--android:angle="270"-->
+    <gradient
+        android:startColor="@color/green"
+        android:endColor="@color/green4"
+        android:type="linear"
+        />
+
+</shape>

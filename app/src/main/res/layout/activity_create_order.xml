@@ -15,13 +15,13 @@
             android:id="@+id/order_StatusbarView"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/green"/>
+            android:background="@drawable/gradient_color"/>
 
         <com.example.shixian.widget.myToolbar
             android:id="@+id/order_toolbar"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/green"
+            android:background="@drawable/gradient_color"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="订单详情"
@@ -496,7 +496,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:background="@color/transparent4">
 
