@@ -1,6 +1,7 @@
 package com.example.shixian.fragment;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,11 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.example.shixian.Contants;
+import com.example.shixian.NewsActivity;
 import com.example.shixian.R;
+import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVSimpleAdapter;
 import com.example.shixian.adapter.cell.cell_home_item1;
 import com.example.shixian.adapter.cell.cell_home_item2;
@@ -32,6 +36,7 @@ import com.example.shixian.bean.HomeItem6;
 import com.example.shixian.bean.Wares;
 import com.example.shixian.http.SimpleCallBack;
 import com.example.shixian.http.SimpleHttpClient;
+import com.example.shixian.utils.ToastUtils;
 import com.example.shixian.widget.myToolbar;
 
 import java.util.ArrayList;
@@ -79,11 +84,11 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public void init() {
 
-        initRecyclerView();
         initMyItem1();
         initMyItem3();
         initMyItem5();
         initMyItem6();
+        initRecyclerView();
         FitsStatusBar(statusBar);
         initRefresh();
 
@@ -136,7 +141,6 @@ public class HomePageFragment extends BaseFragment {
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-
         recyclerView.setAdapter(homeAdapter);
 
     }

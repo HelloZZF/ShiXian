@@ -85,10 +85,10 @@ public class FastBlurUtil {
 
 
     //    把本地图片毛玻璃化
-    public static Bitmap toBlur(Bitmap originBitmap, int scaleRatio) {
+    public static Bitmap toBlur(Bitmap originBitmap, int scaleRatio, int blurRadius) {
         //        int scaleRatio = 10;
         // 增大scaleRatio缩放比，使用一样更小的bitmap去虚化可以到更好的得模糊效果，而且有利于占用内存的减小；
-        int blurRadius = 8;//通常设置为8就行。
+        //int blurRadius = 8;//通常设置为8就行。
         //增大blurRadius，可以得到更高程度的虚化，不过会导致CPU更加intensive
 
 

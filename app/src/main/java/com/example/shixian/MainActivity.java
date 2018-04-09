@@ -39,15 +39,15 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_bottom);
+        viewPager = findViewById(R.id.viewpager);
+        bottomNavigationView = findViewById(R.id.nav_bottom);
         initViewPager();
         initBottomNavigationView();
         setStatusbar();
 
         //从一个活动的Fragment跳转到另一个活动的Fragment
-        int id = getIntent().getIntExtra("VPid",0);
-        if (id == 3) {
+        int id = getIntent().getIntExtra("VPid",-1);
+        if (id == 0) {
             viewPager.setCurrentItem(3);
         }else if (id == 2){
             viewPager.setCurrentItem(2);
@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity {
                             case R.id.menu_user:
                                 if (ShiXianApplication.getInstance().getUser() == null){
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("VPid", 3);
+                                    intent.putExtra("VPid", 0);
                                     startActivity(intent, true);
                                 }else{
                                     viewPager.setCurrentItem(3);

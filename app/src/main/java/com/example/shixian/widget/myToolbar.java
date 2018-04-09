@@ -175,6 +175,11 @@ public class myToolbar extends Toolbar{
         showTitleView();
     }
 
+    public TabLayout getTabLayout() {
+
+        return mTabLayout;
+    }
+
     public void showHomeSearchView(){
         if (homeSearView != null)
             homeSearView.setVisibility(VISIBLE);
@@ -221,6 +226,13 @@ public class myToolbar extends Toolbar{
 
     public SearchView getClassifySearView(){
         return classifySearView;
+    }
+
+    public boolean isShowTabLayout() {
+
+        if (mTabLayout.getVisibility() == VISIBLE)
+            return true;
+        return false;
     }
 
 //    public void showRightButton(){

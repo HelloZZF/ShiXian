@@ -1,16 +1,20 @@
 package com.example.shixian.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 
 import com.example.shixian.widget.MyScrollView;
 import com.example.shixian.R;
+import com.example.shixian.widget.myToolbar;
 
 /**
  * Created by admin on 2017/11/13.
@@ -18,18 +22,21 @@ import com.example.shixian.R;
 
 public class DetailsFragment extends BaseFragment{
 
-    FloatingActionButton fab;
-    MyScrollView scrollView;
-    RelativeLayout relativeLayout;
+    private FloatingActionButton fab;
+    private MyScrollView scrollView;
+    private RelativeLayout relativeLayout;
+    private myToolbar mToolbar;
+
 
     @Override
     public View CreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_details, container, false);
 
-        fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        scrollView = (MyScrollView) view.findViewById(R.id.details_scroll);
-        relativeLayout = (RelativeLayout) view.findViewById(R.id.details_relative);
+        fab = view.findViewById(R.id.fab);
+        scrollView = view.findViewById(R.id.details_scroll);
+        relativeLayout = view.findViewById(R.id.details_relative);
+        mToolbar = getActivity().findViewById(R.id.commodity_details_toolbar);
 
         return view;
     }
@@ -38,6 +45,7 @@ public class DetailsFragment extends BaseFragment{
     public void init() {
         setFab();
     }
+
 
     private void setFab() {
 

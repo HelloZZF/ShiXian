@@ -3,15 +3,12 @@ package com.example.shixian.fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
@@ -19,26 +16,17 @@ import com.cjj.MaterialRefreshListener;
 import com.example.shixian.CommodityDetailsAcitivity;
 import com.example.shixian.Contants;
 import com.example.shixian.R;
-import com.example.shixian.adapter.base.Cell;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVSimpleAdapter;
 import com.example.shixian.adapter.cell.cell_classify_ware;
 import com.example.shixian.bean.BaseMsg;
-import com.example.shixian.bean.Ware;
 import com.example.shixian.bean.Wares;
 import com.example.shixian.http.SimpleCallBack;
 import com.example.shixian.http.SimpleHttpClient;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 
 /**
@@ -61,7 +49,7 @@ public class ClassifyVpFragment extends BaseFragment {
     private  static final int STATE_NORMAL = 0;
     private  static final int STATE_REFREH = 1;
     private  static final int STATE_MORE = 2;
-    private int state = STATE_NORMAL;
+    private  int state = STATE_NORMAL;
 
     //Fragment构造方法用SetArguments添加参数
     public static ClassifyVpFragment newInstance(int position){

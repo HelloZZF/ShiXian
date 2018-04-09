@@ -45,8 +45,11 @@
         android:background="#fff">
 
         <RelativeLayout
+            android:id="@+id/foryou_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="@drawable/ripple_selector_style"
             android:layout_weight="1">
 
             <TextView
@@ -98,8 +101,11 @@
             android:background="@color/graybg"/>
 
         <RelativeLayout
+            android:id="@+id/fashion_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="@drawable/ripple_selector_style"
             android:layout_weight="1">
 
             <TextView

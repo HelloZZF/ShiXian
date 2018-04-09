@@ -9,7 +9,6 @@ import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
-import com.example.shixian.bean.Ware;
 import com.example.shixian.bean.Wares;
 import com.squareup.picasso.Picasso;
 

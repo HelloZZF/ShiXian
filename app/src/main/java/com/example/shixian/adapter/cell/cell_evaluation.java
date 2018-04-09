@@ -10,6 +10,7 @@ import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
 import com.example.shixian.adapter.base.RVBaseViewHolder;
 import com.example.shixian.bean.Evaluation;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,9 +48,9 @@ public class cell_evaluation extends RVBaseCell<List<Evaluation>>{
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
 
         Evaluation evaluations = mEvaluations.get(position);
-        holder.getImageView(R.id.evaluation_icon).setImageResource(evaluations.getEvaluationIconId());
-        holder.getTextView(R.id.evaluation_content).setText(evaluations.getEvaluationContent());
-        holder.getTextView(R.id.evaluation_name).setText(evaluations.getEvaluationName());
-        holder.getTextView(R.id.evaluation_time).setText(evaluations.getEvaluationTime());
+        Picasso.with(mContext).load(evaluations.getIcon()).into(holder.getImageView(R.id.evaluation_icon));
+        holder.getTextView(R.id.evaluation_content).setText(evaluations.getContent());
+        holder.getTextView(R.id.evaluation_name).setText(evaluations.getName());
+        holder.getTextView(R.id.evaluation_time).setText(evaluations.getTime());
     }
 }

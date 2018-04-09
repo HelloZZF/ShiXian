@@ -3,7 +3,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!--设置背景色-->
-    <!--<solid android:color="@color/transparent3"/>-->
+    <solid android:color="#807dedbd"/>
     <!--设置圆角-->
     <corners android:radius="105dip" />
     <!--<padding-->
@@ -11,6 +11,6 @@
     <!--android:top="30dp"-->
     <!--/>-->
     <!--设置边框线的宽度和颜色-->
-    <stroke android:width="1dp" android:color="#05d712" />
+    <!--<stroke android:width="1dp" android:color="@color/green5" />-->
 
 </shape>

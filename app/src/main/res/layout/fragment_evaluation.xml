@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="70dp"
     android:background="@color/graybg">
 
     <LinearLayout
@@ -22,8 +23,9 @@
         <Button
             android:id="@+id/evealuation_button1"
             android:background="@drawable/evaluation_button_shape"
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="28dp"
             android:layout_marginLeft="5dp"
             android:textColor="@color/green"
             android:text="好评235"/>
@@ -31,28 +33,31 @@
         <Button
             android:id="@+id/evealuation_button2"
             android:background="@drawable/evaluation_button_shape"
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="28dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/green"
+            android:textColor="@color/green4"
             android:text="中评2"/>
 
         <Button
             android:id="@+id/evealuation_button3"
             android:background="@drawable/evaluation_button_shape"
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="28dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/green"
+            android:textColor="@color/green4"
             android:text="差评1"/>
 
         <Button
             android:id="@+id/evealuation_button4"
             android:background="@drawable/evaluation_button_shape"
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="28dp"
             android:layout_marginLeft="5dp"
-            android:textColor="@color/green"
+            android:textColor="@color/green4"
             android:text="有图213"/>
 
     </LinearLayout>
@@ -68,37 +73,41 @@
             <Button
                 android:id="@+id/evealuation_button5"
                 android:background="@drawable/evaluation_button_shape"
-                android:layout_width="wrap_content"
-                android:layout_height="23dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/green"
+                android:textColor="@color/green4"
                 android:text="送的快36"/>
 
             <Button
                 android:id="@+id/evealuation_button6"
                 android:background="@drawable/evaluation_button_shape"
-                android:layout_width="wrap_content"
-                android:layout_height="23dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/green"
+                android:textColor="@color/green4"
                 android:text="味道好24"/>
 
             <Button
                 android:id="@+id/evealuation_button7"
                 android:background="@drawable/evaluation_button_shape"
-                android:layout_width="wrap_content"
-                android:layout_height="23dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/green"
+                android:textColor="@color/green4"
                 android:text="学得快14"/>
 
             <Button
                 android:id="@+id/evealuation_button8"
                 android:background="@drawable/evaluation_button_shape"
-                android:layout_width="wrap_content"
-                android:layout_height="23dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="28dp"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/green"
+                android:textColor="@color/green4"
                 android:text="新鲜35"/>
 
         </LinearLayout>

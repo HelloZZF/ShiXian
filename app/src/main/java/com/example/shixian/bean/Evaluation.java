@@ -7,31 +7,58 @@ package com.example.shixian.bean;
 
 public class Evaluation {
 
-    private int evaluationIconId;
-    private String evaluationName;
-    private String evaluationContent;
-    private String evaluationTime;
+    private String id;
+    private String user_id;
+    private String content;
+    private String time;
+    private String name;
+    private String icon;
 
-    public Evaluation(int evaluationIconId, String evaluationName, String evaluationContent, String evaluationTime) {
-        this.evaluationIconId = evaluationIconId;
-        this.evaluationName = evaluationName;
-        this.evaluationContent = evaluationContent;
-        this.evaluationTime = evaluationTime;
+    public String getId() {
+        return id;
     }
 
-    public int getEvaluationIconId() {
-        return evaluationIconId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getEvaluationName() {
-        return evaluationName;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public String getEvaluationContent() {
-        return evaluationContent;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getEvaluationTime() {
-        return evaluationTime;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

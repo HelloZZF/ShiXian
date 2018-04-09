@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.shixian">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -60,18 +61,19 @@
             <!-- </intent-filter> -->
 
         </activity>
+        <!-- ShareSDK -->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".CreateOrderActivity" />
+
         <!-- Ping++ SDK -->
         <activity
             android:name="com.pingplusplus.android.PaymentActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity> <!-- 微信支付 -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 微信支付 -->
         <!-- 1.需要将以下"替换成自己 APK 的包名"换成在微信平台上注册填写的包名 -->
         <!-- 2.WxPayEntryActivity 这个类在 SDK 内部实现，开发者不需要额外实现该类 -->
         <activity-alias
@@ -84,16 +86,25 @@
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
+            android:screenOrientation="behind" />
         <activity
             android:name="com.alipay.sdk.auth.AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
-        <activity android:name=".PayResultActivity"
-                  android:theme="@style/ShixianTheme">
-
-        </activity>
+            android:screenOrientation="behind" />
+        <activity
+            android:name=".PayResultActivity"
+            android:theme="@style/ShixianTheme" />
+        <activity android:name=".CreateOrderActivity" />
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".NewsDetailsActivity" />
+        <activity android:name=".TogoActivity" />
+        <activity
+            android:name=".DiyActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".RankActivity" />
+        <activity android:name=".DiscussActivity" />
+        <activity android:name=".DiyWareActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ public class HomeItem3 {
     private String foodname;
     private String icon;
     private String imageurl;
+    private String menu_id;
 
     public String getName() {
         return name;
@@ -41,5 +42,13 @@ public class HomeItem3 {
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public String getMenu_id() {
+        return menu_id;
+    }
+
+    public void setMenu_id(String menu_id) {
+        this.menu_id = menu_id;
     }
 }

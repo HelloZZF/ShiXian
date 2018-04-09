@@ -60,7 +60,7 @@ public class UserLoginActivity extends AppCompatActivity {
 
         Resources res = getResources();
         Bitmap scaledBitmap = BitmapFactory.decodeResource(res, R.drawable.loginbg);
-        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 2);
+        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 2, 8);
         loginbg.setScaleType(ImageView.ScaleType.CENTER_CROP);
         loginbg.setImageBitmap(blurBitmap);
     }

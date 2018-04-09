@@ -1,12 +1,14 @@
 package com.example.shixian.adapter.cell;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.shixian.CommodityDetailsAcitivity;
 import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVSimpleAdapter;
@@ -49,6 +51,14 @@ public class cell_home_item6 extends RVBaseCell<List<Wares>> {
         recyclerView.setLayoutManager(gridLayoutManager);
 
         RVSimpleAdapter Item5adapter = new RVSimpleAdapter();
+        Item5adapter.setOnItemClickListener(new RVBaseAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                Intent intent = new Intent(mContext, CommodityDetailsAcitivity.class);
+                intent.putExtra("ware", item6s.get(position));
+                mContext.startActivity(intent);
+            }
+        });
         Item5adapter.OnlyOneItem(new cell_home_item6i(item6s), item6s.size());
         recyclerView.setAdapter(Item5adapter);
 

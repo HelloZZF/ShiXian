@@ -5,11 +5,14 @@
     android:background="#fff">
 
     <LinearLayout
+        android:id="@+id/togo"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="65dp"
         android:orientation="vertical"
         android:layout_marginBottom="3dp"
+        android:clickable="true"
+        android:background="@drawable/ripple_selector_style"
         android:gravity="center">
 
         <ImageView
@@ -30,10 +33,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/diy"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="65dp"
         android:orientation="vertical"
+        android:clickable="true"
+        android:background="@drawable/ripple_selector_style"
         android:gravity="center">
 
         <ImageView
@@ -54,10 +60,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/discuss"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="65dp"
         android:orientation="vertical"
+        android:clickable="true"
+        android:background="@drawable/ripple_selector_style"
         android:gravity="center">
 
         <ImageView
@@ -79,10 +88,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/rank"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="65dp"
         android:orientation="vertical"
+        android:clickable="true"
+        android:background="@drawable/ripple_selector_style"
         android:gravity="center">
 
         <ImageView

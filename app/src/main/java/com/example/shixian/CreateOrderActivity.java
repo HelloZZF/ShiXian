@@ -27,6 +27,7 @@ import com.example.shixian.adapter.layoutmanager.FullyLinearLayoutManager;
 import com.example.shixian.bean.BaseMsg;
 import com.example.shixian.bean.ShopCart;
 import com.example.shixian.bean.User;
+import com.example.shixian.bean.Wares;
 import com.example.shixian.http.SimpleCallBack;
 import com.example.shixian.http.SimpleHttpClient;
 import com.example.shixian.utils.CartProvider;
@@ -38,6 +39,7 @@ import org.apache.commons.codec.binary.StringUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -73,7 +75,8 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     private TextView mDateText;
     private TextView mTimeText;
     private String total;
-
+    private int isBuy = 0;
+    private Wares mWare = null;
     //获取日期格式器对象
     private DateFormat format =  DateFormat.getDateTimeInstance();
     private Calendar calendar = Calendar.getInstance(Locale.CHINA);
@@ -112,21 +115,47 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void init() {
+
+        Intent intent = getIntent();
+        int buy = intent.getIntExtra("buy", 0);
+        Wares wares = (Wares) intent.getSerializableExtra("ware");
+        if (buy != 0 && wares != null) {
+            isBuy = buy;
+            mWare = wares;
+        }
         channels.put(CHANNEL_ALIPAY, mAliPayButton);
         channels.put(CHANNEL_WECHAT, mWeChatButton);
         mAliPayLayout.setOnClickListener(this);
         mWeChatLayout.setOnClickListener(this);
-        total = getIntent().getStringExtra("total");
-        mTotal.setText("应付款："+total);
+
+        if (isBuy == 1) {
+            total = mWare.getPrice();
+            mTotal.setText("应付款："+total+"¥");
+        }else {
+            total = getIntent().getStringExtra("total");
+            mTotal.setText("应付款："+total);
+        }
+
+
     }
 
     private void initOrder() {
-
-        CartProvider cartProvider = new CartProvider(this);
         RVSimpleAdapter mAdapter = new RVSimpleAdapter();
-        mAdapter.OnlyOneItem(new cell_order_wares(cartProvider.getAll()), cartProvider.getAll().size());
         FullyLinearLayoutManager manager = new FullyLinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        if (isBuy == 1 && mWare != null) {
+            ShopCart cart = new ShopCart();
+            cart.setImageurl(mWare.getImageurl());
+            List<ShopCart> list = new ArrayList<>();
+            list.add(cart);
+            mAdapter.OnlyOneItem(new cell_order_wares(list), 1);
+        }else {
+
+            CartProvider cartProvider = new CartProvider(this);
+            mAdapter.OnlyOneItem(new cell_order_wares(cartProvider.getAll()), cartProvider.getAll().size());
+        }
+
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -354,14 +383,15 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
             toPayResultActivity(-2);
             return;
         }
-        final CartProvider provider = new CartProvider(this);
-        final List<ShopCart> carts = provider.getAll();
-        for (ShopCart cart : carts) {
+
+
+        if (isBuy == 1 && mWare != null) {
+
             SimpleHttpClient.newBuilder()
                     .post()
                     .url(Contants.API.ORDER_ADD)
                     .addParams("user_id", userId)
-                    .addParams("ware_id",Integer.parseInt(cart.getId()))
+                    .addParams("ware_id",mWare.getId())
                     .addParams("ispaid", ispaid)
                     .addParams("time", time)
                     .build()
@@ -369,13 +399,10 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                         @Override
                         public void onSuccess(Response response, BaseMsg msg) {
 
-                            flag[0] = flag[0] + 1;
-                            if (flag[0] == carts.size() && msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
+                            if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
                                 toPayResultActivity(1);
-                                provider.clear();
                             }
-                            if (msg.getResultcode() == BaseMsg.RESULTCODE_ERROR && flag[1] == 1) {
-                                flag[1] = 0;
+                            if (msg.getResultcode() == BaseMsg.RESULTCODE_ERROR) {
                                 toPayResultActivity(-1);
                             }
                         }
@@ -385,7 +412,46 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                             toPayResultActivity(-1);
                         }
                     });
+
+        }else {
+
+            final CartProvider provider = new CartProvider(this);
+            final List<ShopCart> carts  = provider.getAll();
+
+            for (ShopCart cart : carts) {
+                SimpleHttpClient.newBuilder()
+                        .post()
+                        .url(Contants.API.ORDER_ADD)
+                        .addParams("user_id", userId)
+                        .addParams("ware_id",Integer.parseInt(cart.getId()))
+                        .addParams("ispaid", ispaid)
+                        .addParams("time", time)
+                        .build()
+                        .enqueue(new SimpleCallBack<BaseMsg>() {
+                            @Override
+                            public void onSuccess(Response response, BaseMsg msg) {
+
+                                flag[0] = flag[0] + 1;
+                                if (flag[0] == carts.size() && msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
+                                    toPayResultActivity(1);
+                                    provider.clear();
+                                }
+                                if (msg.getResultcode() == BaseMsg.RESULTCODE_ERROR && flag[1] == 1) {
+                                    flag[1] = 0;
+                                    toPayResultActivity(-1);
+                                }
+                            }
+
+                            @Override
+                            public void onError(int code, Exception e) {
+                                toPayResultActivity(-1);
+                            }
+                        });
+            }
         }
+
+
+
 
 
     }
@@ -393,12 +459,27 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     private void toPayResultActivity(int status) {
 
         Intent intent = new Intent(this, PayResultActivity.class);
-        intent.putExtra("total", total);
-        intent.putExtra("time", mTimeText.getText());
-        intent.putExtra("date", mDateText.getText());
-        intent.putExtra("address", mAddress.getText());
-        intent.putExtra("phone", mPhone.getText());
-        intent.putExtra("status", status);
+        if (isBuy == 1 && mWare != null) {
+
+            intent.putExtra("total", total + "¥");
+            intent.putExtra("buy", 1);
+            intent.putExtra("ware", mWare);
+            intent.putExtra("time", mTimeText.getText());
+            intent.putExtra("date", mDateText.getText());
+            intent.putExtra("address", mAddress.getText());
+            intent.putExtra("phone", mPhone.getText());
+            intent.putExtra("status", status);
+        }else {
+
+            intent.putExtra("total", total);
+            intent.putExtra("time", mTimeText.getText());
+            intent.putExtra("date", mDateText.getText());
+            intent.putExtra("address", mAddress.getText());
+            intent.putExtra("phone", mPhone.getText());
+            intent.putExtra("status", status);
+        }
+
+
         startActivity(intent);
         this.finish();
 

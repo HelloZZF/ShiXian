@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/news_StatusbarView"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient_color"/>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.shixian.widget.myToolbar
+                    android:id="@+id/news_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/gradient_color"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="我为你搭"
+                    app:leftButtonIcon="@drawable/back"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"/>
+
+            </android.support.design.widget.AppBarLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/news_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:progress_colors="@array/progress_colors"
+        app:wave_show="true"
+        app:overlay="false"
+        app:wave_color="@color/green3">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/graybg"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.cjj.MaterialRefreshLayout>
+
+
+</LinearLayout>

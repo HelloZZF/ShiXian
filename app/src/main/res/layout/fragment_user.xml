@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/graybg2">
+            android:background="@color/gray5">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -37,41 +37,44 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/UserImage"
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
-                                android:layout_margin="10dp"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_centerVertical="true"
                                 android:src="@drawable/userimage"
                                 />
 
                             <TextView
                                 android:id="@+id/UserName"
                                 android:layout_toRightOf="@id/UserImage"
-                                android:layout_width="wrap_content"
+                                android:layout_width="90dp"
+                                android:gravity="center"
                                 android:layout_height="wrap_content"
-                                android:textSize="24dp"
-                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                android:padding="2dp"
+                                android:textColor="@color/white"
                                 android:text="UserName"
-                                android:layout_marginTop="30dp"
-                                android:layout_marginBottom="20dp"/>
-
-                            <TextView
-                                android:id="@+id/userscore"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/UserName"
-                                android:layout_toRightOf="@id/UserImage"
-                                android:text="积分:"
-                                android:textSize="20dp"/>
+                                android:background="@drawable/user_text_style"
+                                android:layout_marginTop="40dp"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginBottom="8dp"/>
 
                             <TextView
                                 android:id="@+id/UserScore"
-                                android:layout_width="wrap_content"
+                                android:layout_width="90dp"
                                 android:layout_height="wrap_content"
+                                android:padding="2dp"
+                                android:gravity="center"
+                                android:background="@drawable/user_text_style"
                                 android:layout_below="@id/UserName"
-                                android:layout_toRightOf="@id/userscore"
+                                android:layout_toRightOf="@id/UserImage"
                                 android:layout_marginLeft="3dp"
                                 android:text="0"
-                                android:textSize="20dp"/>
+                                android:textColor="@color/white"
+                                android:textSize="16dp"/>
 
                             <ImageView
                                 android:id="@+id/UserIcon"
@@ -151,318 +154,449 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="150dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/user_item1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/item_icon1"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="2.5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="全部订单"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/item_icon1s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/wait_receipt"
+                                android:tint="@color/red"
+                                android:layout_gravity="center_horizontal"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="等待收货"
+                                android:layout_gravity="center"
+                                android:textColor="@color/red"
+                                android:textSize="18dp"/>
+
+                        </LinearLayout>
+
+
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#f0f0f0"/>
-
                 <LinearLayout
-                    android:id="@+id/user_item2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/item_icon2"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_marginBottom="2.5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        app:cardBackgroundColor="@color/transparent5"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="等待收货"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
 
-                    <ImageView
-                        android:id="@+id/item_icon2s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/order"
+                                android:tint="@color/blue2"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="全部订单"
+                                android:textColor="@color/blue2"
+                                android:layout_marginLeft="2.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="18dp"/>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="2.5dp"
+                        android:layout_marginLeft="2.5dp"
+                        android:layout_marginBottom="2.5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="0dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/address"
+                                android:tint="@color/blue2"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="我的地址"
+                                android:textColor="@color/blue2"
+                                android:layout_marginLeft="2.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="18dp"/>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="100dp"
+                android:paddingLeft="2.5dp"
+                android:paddingRight="2.5dp">
 
                 <LinearLayout
-                    android:id="@+id/user_item3"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/item_icon3"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="意见反馈"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/item_icon3s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/idear"
+                                android:tint="@color/yellow2"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2.5dp"
+                                android:text="我的创作"
+                                android:textSize="15dp"
+                                android:textColor="@color/yellow2"/>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#f0f0f0"/>
-
                 <LinearLayout
-                    android:id="@+id/user_item4"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/item_icon4"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我的地址"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/item_icon4s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/comments"
+                                android:tint="@color/yellow2"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2.5dp"
+                                android:text="我的评论"
+                                android:textSize="15dp"
+                                android:textColor="@color/yellow2"/>
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/mall"
+                                android:tint="@color/green4"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2.5dp"
+                                android:text="积分商城"
+                                android:textSize="15dp"
+                                android:textColor="@color/green4"/>
+
+                        </LinearLayout>
+
+
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/set"
+                                android:tint="@color/green4"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="2.5dp"
+                                android:text="设置中心"
+                                android:textSize="15dp"
+                                android:textColor="@color/green4"/>
+
+                        </LinearLayout>
+
+
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="75dp"
+                android:paddingRight="2.5dp"
+                android:paddingLeft="2.5dp">
 
                 <LinearLayout
-                    android:id="@+id/user_item5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/item_icon5"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="0dp"
+                        android:clickable="true"
+                        android:layout_margin="2.5dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/transparent5"
+                        app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="积分商城"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
 
-                    <ImageView
-                        android:id="@+id/item_icon5s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:src="@drawable/record"
+                                android:tint="@color/yellow2"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="浏览记录"
+                                android:textColor="@color/yellow2"
+                                android:layout_marginLeft="2.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="18dp"/>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#f0f0f0"/>
-
                 <LinearLayout
-                    android:id="@+id/user_item6"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/item_icon6"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="0dp"
+                        android:layout_margin="2.5dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/transparent5">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="浏览记录"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
 
-                    <ImageView
-                        android:id="@+id/item_icon6s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/suggest"
+                                android:tint="@color/green4"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="意见反馈"
+                                android:textColor="@color/green4"
+                                android:layout_marginLeft="2.5dp"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="18dp"/>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="75dp">
 
-                <LinearLayout
-                    android:id="@+id/user_item7"
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selector">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2.5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="true"
+                    android:layout_marginBottom="5dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/transparent5">
 
-                    <ImageView
-                        android:id="@+id/item_icon7"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="设置中心"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center">
 
-                    <ImageView
-                        android:id="@+id/item_icon7s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/we"
+                            android:tint="@color/coral"/>
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="关于我们"
+                            android:textColor="@color/coral"
+                            android:layout_marginLeft="2.5dp"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="18dp"/>
+                    </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#f0f0f0"/>
-
-                <LinearLayout
-                    android:id="@+id/user_item8"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selector">
-
-                    <ImageView
-                        android:id="@+id/item_icon8"
-                        android:layout_marginLeft="34dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:tint="@color/blue"
-                        android:layout_gravity="center_vertical"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="关于我们"
-                        android:textSize="18dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_gravity="center_vertical"/>
-
-                    <ImageView
-                        android:id="@+id/item_icon8s"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="180dp"
-                        android:tint="@color/gray"
-                        android:layout_gravity="center_vertical"/>
-
-                </LinearLayout>
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 

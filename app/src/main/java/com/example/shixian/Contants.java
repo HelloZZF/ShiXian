@@ -44,5 +44,7 @@ public class Contants {
 
         public static final String WARE_GET = BASE_URL + "/ware/get.php";
 
+        public static final String DIY_WARE_GET = "http://apis.juhe.cn/cook/queryid?key=2fa451faf93134fd046b157b844e5b16";
+
     }
 }

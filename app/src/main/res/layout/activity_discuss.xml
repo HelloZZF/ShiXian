@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shixian.DiscussActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/discuss_status"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/green6"/>
+
+        <com.example.shixian.widget.myToolbar
+            android:id="@+id/discuss_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/green6"
+            app:title="谈家常"
+            app:leftButtonIcon="@drawable/back">
+
+        </com.example.shixian.widget.myToolbar>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/discuss_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/discuss_bg">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <EditText
+            android:id="@+id/discuss_edit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:hint=" 讨论点什么 . . ."
+            android:background="@null"
+            android:maxLines="2"/>
+
+        <Button
+            android:id="@+id/discuss_send"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/blue3"
+            android:text="发送"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

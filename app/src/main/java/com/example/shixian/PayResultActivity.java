@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.shixian.bean.ShopCart;
+import com.example.shixian.bean.Wares;
 import com.example.shixian.http.SimpleHttpClient;
 import com.example.shixian.utils.CartProvider;
 import com.example.shixian.widget.myToolbar;
 
 import java.util.List;
 
-public class PayResultActivity extends AppCompatActivity {
+public class PayResultActivity extends BaseActivity {
 
     private myToolbar mToolbar;
     private TextView mPhoneText;
@@ -36,6 +37,8 @@ public class PayResultActivity extends AppCompatActivity {
     private String mDate;
     private String mPhone;
     private int mStatus;
+    private int isBuy = 0;
+    private Wares mWares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,21 @@ public class PayResultActivity extends AppCompatActivity {
         mStatusImage = findViewById(R.id.status_image);
 
         Intent intent = getIntent();
-        mAddress = intent.getStringExtra("address");
-        mTotal = intent.getStringExtra("total");
-        mTime = intent.getStringExtra("time");
-        mDate = intent.getStringExtra("date");
-        mPhone = intent.getStringExtra("phone");
-        mStatus = intent.getIntExtra("status", 0);
+        if (intent != null) {
+
+            mAddress = intent.getStringExtra("address");
+            mTotal = intent.getStringExtra("total");
+            mTime = intent.getStringExtra("time");
+            mDate = intent.getStringExtra("date");
+            mPhone = intent.getStringExtra("phone");
+            mStatus = intent.getIntExtra("status", 0);
+
+            isBuy = intent.getIntExtra("buy", 0) == 0 ? 0:1 ;
+            if (intent.getSerializableExtra("ware") != null) {
+                mWares = (Wares) intent.getSerializableExtra("ware");
+            }
+        }
+
 
         initToolbar();
         initOrderList();
@@ -65,13 +77,8 @@ public class PayResultActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        //让活动的布局显示在状态栏上并且把状态栏设置为透明色
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
 
+        setStatusbar();
         mToolbar.setTitle("订单详情");
         mToolbar.setLeftButtonOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,11 +113,20 @@ public class PayResultActivity extends AppCompatActivity {
     private String CreateWareList() {
 
         String wareList = "";
-        CartProvider provider = new CartProvider(this);
-        List<ShopCart> list = provider.getAll();
-        for (ShopCart cart : list) {
-            wareList += cart.getName() + "   x " + cart.getCount() + "\n";
+
+        if (isBuy == 1 && mWares != null) {
+
+            wareList += mWares.getName() + "x" + "1";
+        }else {
+
+            CartProvider provider = new CartProvider(this);
+            List<ShopCart> list = provider.getAll();
+            for (ShopCart cart : list) {
+                wareList += cart.getName() + "   x " + cart.getCount() + "\n";
+            }
         }
+
+
 
         return wareList;
     }

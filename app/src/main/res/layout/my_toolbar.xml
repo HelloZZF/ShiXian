@@ -12,7 +12,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         app:tabSelectedTextColor="@color/green"
-        app:tabBackground="@color/transparent2">
+        app:tabTextColor="@color/gray">
 
         <android.support.design.widget.TabItem
             android:layout_height="wrap_content"
