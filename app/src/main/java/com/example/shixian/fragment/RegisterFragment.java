@@ -49,6 +49,13 @@ public class RegisterFragment extends BaseFragment {
     private CountTimerView countTimerView;
 
     @Override
+    public void init() {
+
+        getVerify();
+        Register();
+    }
+
+    @Override
     public View CreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         mPhone = view.findViewById(R.id.register_phone);
@@ -64,23 +71,16 @@ public class RegisterFragment extends BaseFragment {
         return view;
     }
 
-    @Override
-    public void init() {
-
-        getVerify();
-        Register();
-    }
-
     private void getVerify() {
 
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //trim去掉String前后的空格，replace用""代替\\s*
-                String phone = mPhone.getText().toString().trim().replace("\\s*","");
+                String phone = mPhone.getText().toString().trim().replace("\\s*", "");
                 checkPhoneNum(phone);
 
-                countTimerView = new CountTimerView(verifyButton,R.string.smssdk_resend_identify_code);
+                countTimerView = new CountTimerView(verifyButton, R.string.smssdk_resend_identify_code);
                 countTimerView.start();
                 sendCode(DEFAULT_COUNTRY_CODE, phone);
             }
@@ -96,12 +96,12 @@ public class RegisterFragment extends BaseFragment {
                 String verifyCode = mVerify.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
-                if (TextUtils.isEmpty(verifyCode)){
-                    ToastUtils.show(getContext(),"请输入验证码");
+                if (TextUtils.isEmpty(verifyCode)) {
+                    ToastUtils.show(getContext(), "请输入验证码");
                     return;
                 }
-                if (TextUtils.isEmpty(password)){
-                    ToastUtils.show(getContext(),"请输入密码");
+                if (TextUtils.isEmpty(password)) {
+                    ToastUtils.show(getContext(), "请输入密码");
                     return;
                 }
                 submitCode(DEFAULT_COUNTRY_CODE, phone, password, verifyCode);
@@ -110,6 +110,29 @@ public class RegisterFragment extends BaseFragment {
 
     }
 
+    private void checkPhoneNum(String phone) {
+
+        if (TextUtils.isEmpty(phone)) {
+            ToastUtils.show(getContext(), "请输入手机号");
+            return;
+        }
+
+        if (phone.length() != 11) {
+            ToastUtils.show(getContext(), "手机号位数不对");
+            return;
+        }
+
+        //判断输入手机号格式
+        String rule = "^1(3|5|7|8|4)\\d{9}";
+        Pattern p = Pattern.compile(rule);
+        Matcher m = p.matcher(phone);
+
+        if (!m.matches()) {
+            ToastUtils.show(getContext(), "您输入的手机号码格式不正确");
+            return;
+        }
+
+    }
 
     // 请求验证码，其中country表示国家代码，如“86”；phone表示手机号码，如“13800138000”
     public void sendCode(String country, String phone) {
@@ -122,10 +145,10 @@ public class RegisterFragment extends BaseFragment {
                         if (result == SMSSDK.RESULT_COMPLETE) {
                             // TODO 处理成功得到验证码的结果
                             // 请注意，此时只是完成了发送验证码的请求，验证码短信还需要几秒钟之后才送达
-                            if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
-                                ToastUtils.show(getContext(),"验证码已发送");
+                            if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                                ToastUtils.show(getContext(), "验证码已发送");
                             }
-                        } else{
+                        } else {
                             // TODO 处理错误的结果
                             // 根据服务器返回的网络错误，给toast提示
                             try {
@@ -164,10 +187,10 @@ public class RegisterFragment extends BaseFragment {
                     public void run() {
                         if (result == SMSSDK.RESULT_COMPLETE) {
                             // TODO 处理验证成功的结果
-                            if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE){
+                            if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                                 doRegister(phone, password);
                             }
-                        } else{
+                        } else {
                             // TODO 处理错误的结果
                             // 根据服务器返回的网络错误，给toast提示
                             try {
@@ -207,15 +230,15 @@ public class RegisterFragment extends BaseFragment {
                     @Override
                     public void onSuccess(Response response, BaseMsg<User> msg) {
 
-                        if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
+                        if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS) {
 
                             ShiXianApplication application = ShiXianApplication.getInstance();
                             application.putUser(msg.getData().get(0));
 
-                            if (application.getIntent() == null){
+                            if (application.getIntent() == null) {
                                 getActivity().setResult(Activity.RESULT_OK);
                                 getActivity().finish();
-                            }else{
+                            } else {
                                 application.jumpToTargetActivity(getActivity());
                             }
                         }
@@ -229,30 +252,6 @@ public class RegisterFragment extends BaseFragment {
                         Toast.makeText(getContext(), "注册失败", Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    private void checkPhoneNum(String phone) {
-
-        if (TextUtils.isEmpty(phone)){
-            ToastUtils.show(getContext(),"请输入手机号");
-            return;
-        }
-
-        if (phone.length() != 11){
-            ToastUtils.show(getContext(),"手机号位数不对");
-            return;
-        }
-
-        //判断输入手机号格式
-        String rule = "^1(3|5|7|8|4)\\d{9}";
-        Pattern p = Pattern.compile(rule);
-        Matcher m = p.matcher(phone);
-
-        if (!m.matches()) {
-            ToastUtils.show(getContext(),"您输入的手机号码格式不正确");
-            return;
-        }
-
     }
 
     @Override

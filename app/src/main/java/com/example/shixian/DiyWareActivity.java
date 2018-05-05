@@ -19,6 +19,7 @@ import com.example.shixian.bean.DiyWareMsg;
 import com.example.shixian.http.SimpleCallBack;
 import com.example.shixian.http.SimpleHttpClient;
 import com.example.shixian.utils.FastBlurUtil;
+import com.example.shixian.utils.ToastUtils;
 import com.example.shixian.widget.myToolbar;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -26,6 +27,7 @@ import com.squareup.picasso.Target;
 import java.io.IOException;
 import java.util.List;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -40,7 +42,7 @@ public class DiyWareActivity extends BaseActivity {
     private List<DiyWare> mDiyWareList;
     private ScrollView mScrollView;
     private Target target;
-    private int WareId;
+    private int WareId = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -57,9 +59,17 @@ public class DiyWareActivity extends BaseActivity {
         mingredients = findViewById(R.id.ingredients);
         mburden = findViewById(R.id.burden);
 
-        if (getIntent() != null)
-            //WareId = 1017;
-            WareId = Integer.parseInt(getIntent().getStringExtra("id"));
+        if (getIntent() != null) {
+
+            try {
+
+                WareId = Integer.parseInt(getIntent().getStringExtra("id"));
+            }catch (Exception e) {
+
+                this.finish();
+            }
+
+        }
 
         init();
     }
@@ -111,6 +121,25 @@ public class DiyWareActivity extends BaseActivity {
                 DiyWareActivity.this.finish();
             }
         });
+
+        mToolbar.setRightButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showShare();
+            }
+        });
+    }
+
+    private void showShare() {
+
+        OnekeyShare oks = new OnekeyShare();
+        oks.disableSSOWhenAuthorize();
+        oks.setTitle(mDiyWareList.get(0).getTitle());
+        oks.setText(mDiyWareList.get(0).getIngredients());
+        oks.setImageUrl(mDiyWareList.get(0).getImtro());
+
+        // 启动分享GUI
+        oks.show(this);
     }
 
     private void initRecyclerView() {
@@ -121,33 +150,43 @@ public class DiyWareActivity extends BaseActivity {
             mAdapter.OnlyOneItem(new cell_diy_ware(mDiyWareList), mDiyWareList.get(0).getSteps().size());
             mRecyclerView.setAdapter(mAdapter);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mRecyclerView.setNestedScrollingEnabled(false);
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void initData() {
 
-        SimpleHttpClient.newBuilder()
-                .get()
-                .url(Contants.API.DIY_WARE_GET)
-                .addParams("id",WareId)
-                .build()
-                .enqueue(new SimpleCallBack<DiyWareMsg>() {
-                    @Override
-                    public void onSuccess(Response response, DiyWareMsg diyWareMsg) {
+        if(WareId != 0)
+            SimpleHttpClient.newBuilder()
+                    .get()
+                    .url(Contants.API.DIY_WARE_GET)
+                    .addParams("id",WareId)
+                    .build()
+                    .enqueue(new SimpleCallBack<DiyWareMsg>() {
+                        @Override
+                        public void onSuccess(Response response, DiyWareMsg diyWareMsg) {
 
-                            mDiyWareList = diyWareMsg.getResult().getData();
-                            initRecyclerView();
-                            initImgBg();
-                            mingredients.setText("食材: "+mDiyWareList.get(0).getIngredients());
-                            mburden.setText("调料: " + mDiyWareList.get(0).getBurden());
-                            mToolbar.setTitle(mDiyWareList.get(0).getTitle());
-                    }
+                                if ("206".equals(diyWareMsg.getResultcode())){
 
-                    @Override
-                    public void onError(int code, Exception e) {
+                                    DiyWareActivity.this.finish();
+                                    ToastUtils.show(DiyWareActivity.this, "菜品编号不存在");
+                                }else if ("200".equals(diyWareMsg.getResultcode())) {
 
-                    }
-                });
+                                    mDiyWareList = diyWareMsg.getResult().getData();
+                                    initRecyclerView();
+                                    initImgBg();
+                                    mingredients.setText("食材: "+mDiyWareList.get(0).getIngredients());
+                                    mburden.setText("调料: " + mDiyWareList.get(0).getBurden());
+                                    mToolbar.setTitle(mDiyWareList.get(0).getTitle());
+                                }
+
+                        }
+
+                        @Override
+                        public void onError(int code, Exception e) {
+
+                        }
+                    });
     }
 }

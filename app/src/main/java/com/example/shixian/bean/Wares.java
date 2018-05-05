@@ -7,7 +7,7 @@ import java.util.List;
  * Created by admin on 2018/1/17.
  */
 
-public class Wares implements Serializable{
+public class Wares implements Serializable {
 
     private String id;
     private String name;
@@ -18,6 +18,15 @@ public class Wares implements Serializable{
     private String sort;
     private String type;
     private String menu_id;
+    private String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getId() {
         return id;

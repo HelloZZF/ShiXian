@@ -1,12 +1,14 @@
 package com.example.shixian.adapter.cell;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.shixian.DiyWareActivity;
 import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
@@ -77,6 +79,18 @@ public class cell_rank extends RVBaseCell<List<HomeItem3>> {
 
             holder.getTextView(R.id.rank_text).setText(position+1 + ".");
         }
+
+        final String id = item3s.get(position).getMenu_id();
+
+        holder.getView(R.id.rank_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, DiyWareActivity.class);
+                intent.putExtra("id", id);
+                mContext.startActivity(intent);
+            }
+        });
 
 
     }

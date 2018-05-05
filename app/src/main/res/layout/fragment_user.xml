@@ -19,8 +19,10 @@
             android:background="@color/gray5">
 
             <RelativeLayout
+                android:id="@+id/user_relative"
                 android:layout_width="match_parent"
-                android:layout_height="220dp">
+                android:layout_height="220dp"
+                android:clickable="true">
 
                         <ImageView
                             android:id="@+id/User_bg"
@@ -94,6 +96,8 @@
                             android:background="@color/transparent4">
 
                             <LinearLayout
+                                android:id="@+id/user_collect"
+                                android:clickable="true"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -124,6 +128,8 @@
                                 android:background="#f0f0f0"/>
 
                             <LinearLayout
+                                android:id="@+id/user_coupon"
+                                android:clickable="true"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -164,6 +170,7 @@
                     android:layout_weight="1">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_wait_receipt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
@@ -212,6 +219,7 @@
                     android:orientation="vertical">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_order"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="5dp"
@@ -249,6 +257,7 @@
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_address"
                         android:layout_width="match_parent"
                         android:layout_marginTop="2.5dp"
                         android:layout_marginLeft="2.5dp"
@@ -311,6 +320,7 @@
                         app:cardElevation="0dp">
 
                         <LinearLayout
+                            android:id="@+id/user_mydiy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -342,6 +352,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_evaluation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="2.5dp"
@@ -385,6 +396,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_score"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="2.5dp"
@@ -429,6 +441,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_set"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="2.5dp"
@@ -482,6 +495,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_record"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="0dp"
@@ -522,6 +536,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/my_suggest"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="0dp"
@@ -563,6 +578,7 @@
                 android:layout_height="75dp">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/my_about_us"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="2.5dp"
@@ -613,7 +629,7 @@
             android:id="@+id/user_StatusbarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"/>
+            android:background="@color/transparent" />
 
         <com.example.shixian.widget.myToolbar
             android:id="@+id/user_toolbar"

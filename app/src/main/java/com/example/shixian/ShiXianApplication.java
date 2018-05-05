@@ -16,6 +16,7 @@ public class ShiXianApplication extends Application{
     private static ShiXianApplication shiXianApplication;
     private User mUser;
     private Intent mIntent;
+    private boolean isChangeUser = false;
 
     public static ShiXianApplication getInstance(){
         return shiXianApplication;
@@ -47,7 +48,12 @@ public class ShiXianApplication extends Application{
     public void cleanUser() {
 
         this.mUser = null;
+        isChangeUser = true;
         UserLocalData.cleanUser(this);
+    }
+
+    public boolean isChangeUser() {
+        return isChangeUser;
     }
 
     public void putIntent(Intent intent) {

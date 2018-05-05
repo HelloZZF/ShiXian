@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import android.widget.TimePicker;
 import com.example.shixian.adapter.base.RVSimpleAdapter;
 import com.example.shixian.adapter.cell.cell_order_wares;
 import com.example.shixian.adapter.layoutmanager.FullyLinearLayoutManager;
+import com.example.shixian.bean.Address;
 import com.example.shixian.bean.BaseMsg;
 import com.example.shixian.bean.ShopCart;
 import com.example.shixian.bean.User;
@@ -35,8 +37,6 @@ import com.example.shixian.utils.ToastUtils;
 import com.example.shixian.widget.myToolbar;
 import com.pingplusplus.android.Pingpp;
 
-import org.apache.commons.codec.binary.StringUtils;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,11 +46,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import okhttp3.Address;
 import okhttp3.Response;
 
-public class CreateOrderActivity extends BaseActivity implements View.OnClickListener{
+public class CreateOrderActivity extends BaseActivity implements View.OnClickListener {
 
     /**
      * 微信支付渠道
@@ -68,6 +66,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     private RecyclerView mRecyclerView;
     private RelativeLayout mAliPayLayout;
     private RelativeLayout mWeChatLayout;
+    private LinearLayout mEditAddrLayout;
     private RadioButton mAliPayButton;
     private RadioButton mWeChatButton;
     private TextView mTotal;
@@ -78,10 +77,10 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     private int isBuy = 0;
     private Wares mWare = null;
     //获取日期格式器对象
-    private DateFormat format =  DateFormat.getDateTimeInstance();
+    private DateFormat format = DateFormat.getDateTimeInstance();
     private Calendar calendar = Calendar.getInstance(Locale.CHINA);
     private String payChannel = CHANNEL_ALIPAY;
-    private HashMap<String,RadioButton> channels = new HashMap<>(3);
+    private HashMap<String, RadioButton> channels = new HashMap<>(3);
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -98,6 +97,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
         mWeChatLayout = findViewById(R.id.rl_wechat);
         mAliPayButton = findViewById(R.id.rb_alipay);
         mWeChatButton = findViewById(R.id.rb_webchat);
+        mEditAddrLayout = findViewById(R.id.order_addr_list);
         mTotal = findViewById(R.id.txt_total);
         mOrderButton = findViewById(R.id.btn_createOrder);
         mDateText = findViewById(R.id.date);
@@ -130,13 +130,30 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
         if (isBuy == 1) {
             total = mWare.getPrice();
-            mTotal.setText("应付款："+total+"¥");
-        }else {
+            mTotal.setText("应付款：" + total + "¥");
+        } else {
             total = getIntent().getStringExtra("total");
-            mTotal.setText("应付款："+total);
+            mTotal.setText("应付款：" + total);
         }
 
+        mEditAddrLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CreateOrderActivity.this, MyAddressActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
+
+    }
+
+    private void initToolbar() {
+        mToolbar.setLeftButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initOrder() {
@@ -150,7 +167,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
             List<ShopCart> list = new ArrayList<>();
             list.add(cart);
             mAdapter.OnlyOneItem(new cell_order_wares(list), 1);
-        }else {
+        } else {
 
             CartProvider cartProvider = new CartProvider(this);
             mAdapter.OnlyOneItem(new cell_order_wares(cartProvider.getAll()), cartProvider.getAll().size());
@@ -158,76 +175,6 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-    private void initToolbar() {
-        mToolbar.setLeftButtonOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
-    //点击手机返回键时执行的操作
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    private void initTime() {
-
-        mDateText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(CreateOrderActivity.this, R.style.MyDatePickerDialogTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-
-                        calendar.set(Calendar.YEAR,year);
-                        calendar.set(Calendar.MONTH,month);
-                        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                        updataTime("date");
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), Calendar.DAY_OF_MONTH);
-                datePickerDialog.show();
-                updataTime("date");
-            }
-        });
-
-        mTimeText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateOrderActivity.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-
-                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                        calendar.set(Calendar.MINUTE,minute);
-                        updataTime("time");
-                    }
-                }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
-                timePickerDialog.show();
-                updataTime("time");
-            }
-        });
-    }
-
-    private void updataTime(String time) {
-
-        String times = format.format(calendar.getTime());
-        if (time.equals("date")) {
-            mDateText.setText(times.substring(0, times.indexOf(" ")));
-        }else if (time.equals("time")) {
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
-                String str = times.substring(times.indexOf(" "));
-                mTimeText.setText(str.substring(0, str.indexOf(":")+3).trim());
-            }
-            else{
-                mTimeText.setText(times.substring(times.indexOf(" ")).substring(0, 6).trim());
-            }
-        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -260,18 +207,56 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+    private void initTime() {
+
+        mDateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CreateOrderActivity.this, R.style.MyDatePickerDialogTheme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        updataTime("date");
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), Calendar.DAY_OF_MONTH);
+                datePickerDialog.show();
+                updataTime("date");
+            }
+        });
+
+        mTimeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateOrderActivity.this, R.style.MyDatePickerDialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
+                        updataTime("time");
+                    }
+                }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+                timePickerDialog.show();
+                updataTime("time");
+            }
+        });
+    }
+
     private void initOrderButton() {
 
         mOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (mDateText.getText().toString().trim().equals("请点击选择配送日期")){
+                if (mDateText.getText().toString().trim().equals("请点击选择配送日期")) {
                     ToastUtils.show(CreateOrderActivity.this, "请输入配送日期");
                     return;
                 }
 
-                if (mTimeText.getText().toString().trim().equals("请点击选择配送时间")){
+                if (mTimeText.getText().toString().trim().equals("请点击选择配送时间")) {
                     ToastUtils.show(CreateOrderActivity.this, "请输入配送时间");
                     return;
                 }
@@ -279,6 +264,21 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                 postNewOrder();
             }
         });
+    }
+
+    private void updataTime(String time) {
+
+        String times = format.format(calendar.getTime());
+        if (time.equals("date")) {
+            mDateText.setText(times.substring(0, times.indexOf(" ")));
+        } else if (time.equals("time")) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                String str = times.substring(times.indexOf(" "));
+                mTimeText.setText(str.substring(0, str.indexOf(":") + 3).trim());
+            } else {
+                mTimeText.setText(times.substring(times.indexOf(" ")).substring(0, 6).trim());
+            }
+        }
     }
 
     private void postNewOrder() {
@@ -346,19 +346,29 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                     changeOrderStatus(-2);
                 else
                     changeOrderStatus(0);
-            /* 处理返回值
-             * "success" - 支付
-             * 成功
-             * "fail"    - 支付失败
-             * "cancel"  - 取消支付
-             * "invalid" - 支付插件未安装（一般是微信客户端未安装的情况）
-             * "unknown" - app进程异常被杀死(一般是低内存状态下,app进程被杀死)
-             */
-             //   String errorMsg = data.getExtras().getString("error_msg"); // 错误信息
-             //   String extraMsg = data.getExtras().getString("extra_msg"); // 错误信息
-             //   showMsg(result, errorMsg, extraMsg);
+                /* 处理返回值
+                 * "success" - 支付
+                 * 成功
+                 * "fail"    - 支付失败
+                 * "cancel"  - 取消支付
+                 * "invalid" - 支付插件未安装（一般是微信客户端未安装的情况）
+                 * "unknown" - app进程异常被杀死(一般是低内存状态下,app进程被杀死)
+                 */
+                //   String errorMsg = data.getExtras().getString("error_msg"); // 错误信息
+                //   String extraMsg = data.getExtras().getString("extra_msg"); // 错误信息
+                //   showMsg(result, errorMsg, extraMsg);
             }
+        }else if (resultCode == RESULT_OK && requestCode == 1) {
+
+            initAddress();
         }
+    }
+
+    //点击手机返回键时执行的操作
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     //支付成功之后向，服务器改变订单的支付状态
@@ -367,20 +377,20 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
         int ispaid = -1;
         int userId = 0;
-        final int[] flag = {0,1};
+        final int[] flag = {0, 1};
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = new Date(System.currentTimeMillis());
         ShiXianApplication application = ShiXianApplication.getInstance();
-        if (application.getUser() != null){
-           userId = Integer.parseInt(application.getUser().getId());
+        if (application.getUser() != null) {
+            userId = Integer.parseInt(application.getUser().getId());
         }
         String time = "'" + simpleDateFormat.format(date) + "'";
         if (status == 1)
             ispaid = 1;
-        else if (status == -1)
+        else if (status == -2)
             ispaid = 0;
-        else if (status == -2) {
-            toPayResultActivity(-2);
+        else if (status == -1) {
+            toPayResultActivity(-1);
             return;
         }
 
@@ -391,7 +401,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                     .post()
                     .url(Contants.API.ORDER_ADD)
                     .addParams("user_id", userId)
-                    .addParams("ware_id",mWare.getId())
+                    .addParams("ware_id", mWare.getId())
                     .addParams("ispaid", ispaid)
                     .addParams("time", time)
                     .build()
@@ -399,8 +409,13 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                         @Override
                         public void onSuccess(Response response, BaseMsg msg) {
 
-                            if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
-                                toPayResultActivity(1);
+                            if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS) {
+
+                                if (status == -2)
+                                    toPayResultActivity(-2);
+                                else if (status == 1)
+                                    toPayResultActivity(1);
+
                             }
                             if (msg.getResultcode() == BaseMsg.RESULTCODE_ERROR) {
                                 toPayResultActivity(-1);
@@ -413,17 +428,17 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                         }
                     });
 
-        }else {
+        } else {
 
             final CartProvider provider = new CartProvider(this);
-            final List<ShopCart> carts  = provider.getAll();
+            final List<ShopCart> carts = provider.getAll();
 
             for (ShopCart cart : carts) {
                 SimpleHttpClient.newBuilder()
                         .post()
                         .url(Contants.API.ORDER_ADD)
                         .addParams("user_id", userId)
-                        .addParams("ware_id",Integer.parseInt(cart.getId()))
+                        .addParams("ware_id", Integer.parseInt(cart.getId()))
                         .addParams("ispaid", ispaid)
                         .addParams("time", time)
                         .build()
@@ -432,9 +447,12 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                             public void onSuccess(Response response, BaseMsg msg) {
 
                                 flag[0] = flag[0] + 1;
-                                if (flag[0] == carts.size() && msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
-                                    toPayResultActivity(1);
-                                    provider.clear();
+                                if (flag[0] == carts.size() && msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS) {
+
+                                    if (status == -2)
+                                        toPayResultActivity(-2);
+                                    else if (status == 1)
+                                        toPayResultActivity(1);
                                 }
                                 if (msg.getResultcode() == BaseMsg.RESULTCODE_ERROR && flag[1] == 1) {
                                     flag[1] = 0;
@@ -444,6 +462,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
                             @Override
                             public void onError(int code, Exception e) {
+
                                 toPayResultActivity(-1);
                             }
                         });
@@ -451,14 +470,12 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
         }
 
 
-
-
-
     }
 
     private void toPayResultActivity(int status) {
 
         Intent intent = new Intent(this, PayResultActivity.class);
+
         if (isBuy == 1 && mWare != null) {
 
             intent.putExtra("total", total + "¥");
@@ -469,7 +486,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
             intent.putExtra("address", mAddress.getText());
             intent.putExtra("phone", mPhone.getText());
             intent.putExtra("status", status);
-        }else {
+        } else {
 
             intent.putExtra("total", total);
             intent.putExtra("time", mTimeText.getText());
@@ -485,22 +502,23 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+
     @Override
     public void onClick(View view) {
         selectPayChannle(view.getTag().toString());
     }
 
-    public void selectPayChannle(String paychannel){
+    public void selectPayChannle(String paychannel) {
 
         for (Map.Entry<String, RadioButton> entry : channels.entrySet()) {
             payChannel = paychannel;
             RadioButton rb = entry.getValue();
-            if (entry.getKey().equals(paychannel)){
+            if (entry.getKey().equals(paychannel)) {
 
                 boolean isCheck = rb.isChecked();
                 rb.setChecked(!isCheck);
 
-            }else {
+            } else {
                 rb.setChecked(false);
             }
         }

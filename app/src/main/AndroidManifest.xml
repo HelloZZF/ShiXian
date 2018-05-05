@@ -21,6 +21,14 @@
 
     <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".ShiXianApplication"
@@ -30,26 +38,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FoodClassActivity" />
-        <activity android:name=".LookUsActivity" />
+        <activity
+            android:name=".FoodClassActivity"
+            android:theme="@style/TransparentTheme" />
+        <activity
+            android:name=".LookUsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity android:name=".UserLoginActivity" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".CommodityDetailsAcitivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".TestActivity">
 
@@ -104,7 +111,29 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".RankActivity" />
         <activity android:name=".DiscussActivity" />
-        <activity android:name=".DiyWareActivity"></activity>
+        <activity android:name=".DiyWareActivity" />
+        <activity android:name=".UserUniversalActivity" />
+        <activity android:name=".AllOrderActivity" />
+        <activity android:name=".WaitReceiptActivity" />
+        <activity android:name=".EditAddressActivity" />
+        <activity android:name=".MyAddressActivity" />
+        <activity android:name=".MyScroeActivity" />
+        <activity
+            android:name=".MySuggestActivity"
+            android:label="@string/title_activity_my_suggest"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SuggestResultActivity" />
+        <activity android:name=".MyAboutUsActivity" />
+        <activity android:name=".MySetActivity" />
+        <activity android:name=".MyMessageActivity" />
+        <activity android:name=".WelcomeActivity"
+                  android:theme="@style/StartTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

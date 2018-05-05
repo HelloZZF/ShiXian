@@ -124,6 +124,8 @@ public class PayResultActivity extends BaseActivity {
             for (ShopCart cart : list) {
                 wareList += cart.getName() + "   x " + cart.getCount() + "\n";
             }
+            if (mStatus == 1)
+                provider.clear();
         }
 
 

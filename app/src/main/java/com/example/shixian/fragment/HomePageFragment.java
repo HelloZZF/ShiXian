@@ -1,7 +1,9 @@
 package com.example.shixian.fragment;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +20,8 @@ import android.widget.RelativeLayout;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.example.shixian.Contants;
+import com.example.shixian.FoodClassActivity;
+import com.example.shixian.LookUsActivity;
 import com.example.shixian.NewsActivity;
 import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
@@ -89,9 +93,29 @@ public class HomePageFragment extends BaseFragment {
         initMyItem5();
         initMyItem6();
         initRecyclerView();
+        initToolbar();
         FitsStatusBar(statusBar);
         initRefresh();
 
+    }
+
+    private void initToolbar() {
+
+        toolbar.setLeftButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), FoodClassActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+
+        toolbar.setRightButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), LookUsActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
     }
 
     private void initRefresh() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rank_head_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,6 +13,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/rank_tow"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="200dp"
@@ -67,6 +69,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rank_one"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="200dp"
@@ -120,6 +123,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rank_three"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="200dp"

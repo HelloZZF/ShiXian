@@ -40,7 +40,7 @@ public class LoginFragment extends BaseFragment {
     public View CreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        Loginbutton = (Button) view.findViewById(R.id.login_button);
+        Loginbutton = view.findViewById(R.id.login_button);
         mPhone = view.findViewById(R.id.login_phone);
         mPassword = view.findViewById(R.id.login_password);
 
@@ -87,6 +87,9 @@ public class LoginFragment extends BaseFragment {
                                 if (msg.getResultcode() == BaseMsg.RESULTCODE_SUCCESS){
 
                                     ShiXianApplication application = ShiXianApplication.getInstance();
+                                    if (application.getUser() != null) {
+                                        application.cleanUser();
+                                    }
                                     application.putUser(msg.getData().get(0));
 
                                     if (application.getIntent() == null){

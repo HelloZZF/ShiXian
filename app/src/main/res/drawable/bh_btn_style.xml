@@ -10,6 +10,7 @@
             <!--<stroke android:width="1.0dp" android:color="#ddd" />-->
         </shape>
     </item>
+
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="50dip" />
@@ -17,6 +18,7 @@
             <!--<stroke android:width="1.0dp" android:color="#ddd" />-->
         </shape>
     </item>
+
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="105dp" />

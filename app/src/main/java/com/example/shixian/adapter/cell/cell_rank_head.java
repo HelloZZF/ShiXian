@@ -1,6 +1,7 @@
 package com.example.shixian.adapter.cell;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.shixian.DiyWareActivity;
 import com.example.shixian.R;
 import com.example.shixian.adapter.base.RVBaseAdapter;
 import com.example.shixian.adapter.base.RVBaseCell;
@@ -67,5 +69,32 @@ public class cell_rank_head extends RVBaseCell<List<HomeItem3>> {
                 .into(holder.getImageView(R.id.rank_food_icon2));
         Picasso.with(mContext).load(item3s.get(2).getImageurl())
                 .into(holder.getImageView(R.id.rank_food_icon3));
+
+        holder.getView(R.id.rank_one).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DiyWareActivity.class);
+                intent.putExtra("id", item3s.get(0).getMenu_id());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.getView(R.id.rank_tow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DiyWareActivity.class);
+                intent.putExtra("id", item3s.get(1).getMenu_id());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.getView(R.id.rank_three).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DiyWareActivity.class);
+                intent.putExtra("id", item3s.get(2).getMenu_id());
+                mContext.startActivity(intent);
+            }
+        });
     }
 }

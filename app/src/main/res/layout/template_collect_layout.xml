@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0.5dp"
+    app:cardCornerRadius="3dp"
+    android:background="@color/white"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <ImageView
+            android:id="@+id/foodimage"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/foodimage"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="5dp"
+            android:text="啊啊啊啊"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:id="@+id/introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/foodimage"
+            android:layout_below="@id/name"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:text="啊啊啊啊啊啊"
+            android:textSize="14dp"
+            android:textColor="@color/gray2"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/defeat"
+            android:backgroundTint="@color/green5"/>
+
+        <TextView
+            android:id="@+id/thought"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/foodimage"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="7dp"
+            android:textSize="13dp"
+            android:textColor="@color/gray2"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

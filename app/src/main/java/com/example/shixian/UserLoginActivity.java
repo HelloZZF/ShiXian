@@ -35,9 +35,9 @@ public class UserLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        viewPager = (ViewPager) findViewById(R.id.user_viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.user_tablayout);
-        loginbg = (ImageView) findViewById(R.id.login_bg);
+        viewPager = findViewById(R.id.user_viewpager);
+        tabLayout = findViewById(R.id.user_tablayout);
+        loginbg = findViewById(R.id.login_bg);
 
         initViewPager();
         initTabLayout();

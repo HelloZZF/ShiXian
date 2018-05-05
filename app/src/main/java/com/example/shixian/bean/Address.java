@@ -1,18 +1,29 @@
 package com.example.shixian.bean;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
  * Created by zzf on 2018/3/8.
  */
 
-public class Address implements Serializable{
+public class Address implements Serializable,Comparable<Address>{
 
     private String id;
     private String user_id;
     private String address;
     private String phone;
     private String isdefault;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getId() {
         return id;
@@ -52,5 +63,14 @@ public class Address implements Serializable{
 
     public void setIsdefault(String isdefault) {
         this.isdefault = isdefault;
+    }
+
+    @Override
+    public int compareTo(@NonNull Address address) {
+
+        if(address.getIsdefault()!=null && this.getIsdefault() !=null)
+            return address.getIsdefault().compareTo(this.getIsdefault());
+
+        return -1;
     }
 }

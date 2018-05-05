@@ -96,7 +96,8 @@ public class DiscussActivity extends BaseActivity {
         Msg msg2 = new Msg();
         msg2.setContent("Hello World!");
         msg2.setType(Msg.TYPE_SENT);
-        msg2.setIcon_url(ShiXianApplication.getInstance().getUser().getIcon());
+        if (ShiXianApplication.getInstance().getUser() != null)
+            msg2.setIcon_url(ShiXianApplication.getInstance().getUser().getIcon());
         mMsgsList.add(msg);
         mMsgsList.add(msg2);
         initRecyclerView();

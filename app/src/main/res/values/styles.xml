@@ -29,4 +29,22 @@
         <item name="colorControlActivated">@color/green</item>
     </style>
 
+    <style name="TransparentTheme" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Toast</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--setContent会有耗时操作，导致出现空白，所以在这直接设置主题，缺点是图片的内存不会释放-->
+    <!--提个建议：当初我也尝试过是这么做的，但有个问题，图片的内存会释放不掉，-->
+    <!--所以放在activity的super调用前，用流资源方式加载图片，设置到window的背景中去就好了-->
+    <style name="StartTheme" parent="AppTheme">
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@drawable/welcomebg</item>
+    </style>
+
 </resources>

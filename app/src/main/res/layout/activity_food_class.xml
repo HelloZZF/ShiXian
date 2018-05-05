@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/fc_linear"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="110dp"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/fc_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入菜品编号"
+        android:textColorHint="@color/gray"
+        android:layout_gravity="center"
+        android:focusableInTouchMode="true"/>
+
+
+    <Button
+        android:id="@+id/fc_ok"
+        android:layout_marginTop="10dp"
+        android:layout_width="230dp"
         android:layout_height="40dp"
-        android:background="#00ff00">
+        android:layout_gravity="center"
+        android:elevation="10dp"
+        android:background="@drawable/bh_btn_style"
+        android:text="确定"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="美食课堂"
-            android:textSize="50px"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"/>
+    <Button
+        android:id="@+id/fc_scanning"
+        android:layout_marginTop="10dp"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:elevation="10dp"
+        android:background="@drawable/bh_btn_style"
+        android:text="扫一扫"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
 
-    </LinearLayout>
 
-    <com.example.shixian.TaskLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
 
-</RelativeLayout>
+</LinearLayout>

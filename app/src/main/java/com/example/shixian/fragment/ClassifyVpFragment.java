@@ -138,16 +138,7 @@ public class ClassifyVpFragment extends BaseFragment {
                     layoutManager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(layoutManager);
                     wareAdapter = new RVSimpleAdapter();
-                    wareAdapter.setOnItemClickListener(new RVBaseAdapter.OnItemClickListener() {
-                        @Override
-                        public void OnItemClick(View view, int position) {
-                            Wares wares = waresList.get(position);
-                            Intent intent = new Intent(getContext(), CommodityDetailsAcitivity.class);
-                            intent.putExtra("ware", wares);
-                            startActivity(intent);
-                        }
-                    });
-                    wareAdapter.OnlyOneItem(new cell_classify_ware(waresList), waresList.size());
+                    wareAdapter.OnlyOneItem(new cell_classify_ware(waresList, getContext()), waresList.size());
                     recyclerView.setAdapter(wareAdapter);
                 }
 
@@ -156,7 +147,7 @@ public class ClassifyVpFragment extends BaseFragment {
             case STATE_REFREH:
 
                 wareAdapter.clear();
-                wareAdapter.OnlyOneItem(new cell_classify_ware(waresList), waresList.size());
+                wareAdapter.OnlyOneItem(new cell_classify_ware(waresList, getContext()), waresList.size());
                 //recyclerView.scrollToPosition(0);
                 mRefreshLayout.finishRefresh();
 
@@ -167,7 +158,7 @@ public class ClassifyVpFragment extends BaseFragment {
                 List<cell_classify_ware> cells = new ArrayList<>();
                 for (int i = 0; i < waresList.size()-BeforeWaresSize; i++){
 
-                    cells.add(new cell_classify_ware(waresList));
+                    cells.add(new cell_classify_ware(waresList, getContext()));
                 }
                 if (cells != null && cells.size() > 0)
                     wareAdapter.addAll(BeforeWaresSize, cells);
