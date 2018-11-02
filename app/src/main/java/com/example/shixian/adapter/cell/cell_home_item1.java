@@ -61,21 +61,21 @@ public class cell_home_item1 extends RVBaseCell<Object> {
         defaultSliderView1.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
             public void onSliderClick(BaseSliderView slider) {
-                Toast.makeText(mContext, "111", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "活动未开始", Toast.LENGTH_SHORT).show();
             }
         });
 
         defaultSliderView2.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
             public void onSliderClick(BaseSliderView slider) {
-                Toast.makeText(mContext, "222", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "活动未开始", Toast.LENGTH_SHORT).show();
             }
         });
 
         defaultSliderView3.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
             public void onSliderClick(BaseSliderView slider) {
-                Toast.makeText(mContext, "333", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "活动未开始", Toast.LENGTH_SHORT).show();
             }
         });
 

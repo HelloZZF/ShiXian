@@ -1,6 +1,7 @@
 package com.example.shixian;
 
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -37,6 +38,15 @@ public class CommodityDetailsAcitivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (ShiXianApplication.getInstance().getUser() == null){
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("VPid", 0);
+            ShiXianApplication.getInstance().putIntent(intent);
+            Intent LoginIntent = new Intent(this, UserLoginActivity.class);
+            CommodityDetailsAcitivity.this.finish();
+            startActivity(LoginIntent);
+        }
         setContentView(R.layout.activity_commodity_details);
 
         //MobSDK.init(this, "2451f719bc5c6", "fdc7201f8821fc30e50158294d3b5d1d");

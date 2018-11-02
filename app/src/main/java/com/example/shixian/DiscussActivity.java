@@ -90,11 +90,11 @@ public class DiscussActivity extends BaseActivity {
     private void initMsg() {
 
         Msg msg = new Msg();
-        msg.setContent("Hello World!");
+        msg.setContent("马大姐! 吃饭了没啊？");
         msg.setType(Msg.TYPE_RECEIVED);
         msg.setIcon_url(getIcon());
         Msg msg2 = new Msg();
-        msg2.setContent("Hello World!");
+        msg2.setContent("刚吃好，准备去打麻将!");
         msg2.setType(Msg.TYPE_SENT);
         if (ShiXianApplication.getInstance().getUser() != null)
             msg2.setIcon_url(ShiXianApplication.getInstance().getUser().getIcon());
@@ -150,12 +150,11 @@ public class DiscussActivity extends BaseActivity {
 
     private String getContent() {
 
-        contentList.add("你再港一句试试！");
-        contentList.add("小青年，你很嚣张嘛？ 放学校门口烧烤摊见，谁吃完付钱谁王八！");
-        contentList.add("麻辣隔壁，听说骨舔热又爆了一个麻痹戒指还有一双草泥马跑鞋，咋么回事啊！最近这个老刁欧的不行！");
-        contentList.add("我跟你港啊，别以为你长得帅我就不敢打你，你在亲一下试试！");
-        contentList.add("什么？老子渣渣辉，左屠龙，右倚天，老牛在腰间！跟你聊天就是在浪费口水！什么都不说了，贪玩蓝月搞起！你充威蛮锅的船新版本，点击就送屠龙宝刀！");
-
+        contentList.add("周大爷在吗？象棋走一走啊！");
+        contentList.add("马大姐，你昨天推荐给我的那个糖醋排骨味道是真的好啊，食材又新鲜，分量又多，真实惠！");
+        contentList.add("王大娘，最近有没有去附近菜市场啊，我用了这个软件之后都好久没有去过菜市场了，最近天气又热，菜场又那么远，赶紧叫你儿子下载一个食鲜啊");
+        contentList.add("今天叫了份川味宫爆虾球给做给孙子吃，孙子直接吃了两碗饭哈哈！");
+        contentList.add("大晚上的，有没有吃完晚饭一起去跳广场舞的啊");
         return contentList.get(new Random().nextInt(5));
     }
 

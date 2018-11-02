@@ -1,5 +1,6 @@
 package com.example.shixian.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 
+import com.example.shixian.MainActivity;
+import com.example.shixian.ShiXianApplication;
+import com.example.shixian.UserLoginActivity;
 import com.example.shixian.widget.MyScrollView;
 import com.example.shixian.R;
 import com.example.shixian.widget.myToolbar;
@@ -32,7 +36,6 @@ public class DetailsFragment extends BaseFragment{
     public View CreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_details, container, false);
-
         fab = view.findViewById(R.id.fab);
         scrollView = view.findViewById(R.id.details_scroll);
         relativeLayout = view.findViewById(R.id.details_relative);

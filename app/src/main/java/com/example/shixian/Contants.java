@@ -10,7 +10,7 @@ public class Contants {
 
     public static class API{
 
-        public static final String BASE_URL = "http://39.108.177.58/sxapi";
+        public static final String BASE_URL = "http://112.74.46.246/sxapi";
 
         public static final String ADDRESS_ADD = BASE_URL + "/address/add.php";
 

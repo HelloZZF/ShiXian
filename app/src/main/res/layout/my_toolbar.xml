@@ -51,7 +51,7 @@
         android:background="@drawable/home_search_shape"
         app:searchIcon="@drawable/searchicon"
         app:closeIcon="@drawable/delect"
-        app:defaultQueryHint="   请输入菜品或用户"
+        app:defaultQueryHint="  请输入菜品或用户"
         app:iconifiedByDefault="false"
         android:visibility="gone"/>
 

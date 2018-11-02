@@ -4,6 +4,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,5 +46,11 @@ public class NewsDetailsActivity extends BaseActivity {
         mTextView.setText(mNews.getContent());
         Picasso.with(this).load(mNews.getImageurl()).into(mImageView);
         mToolbar.setTitle(mNews.getTitle());
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NewsDetailsActivity.this.finish();
+            }
+        });
     }
 }

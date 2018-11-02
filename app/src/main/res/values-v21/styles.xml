@@ -6,9 +6,9 @@
     </style>
 
     <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
-        <item name="android:colorPrimary">@color/green4</item>
-        <item name="android:colorPrimaryDark">@color/green4</item>
-        <item name="android:colorAccent">@color/green4</item>
+        <item name="android:colorPrimary">@color/green</item>
+        <item name="android:colorPrimaryDark">@color/green</item>
+        <item name="android:colorAccent">@color/green</item>
     </style>
     
     <style name="TransparentTheme" parent="Base.Theme.AppCompat.Dialog">

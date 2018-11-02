@@ -155,11 +155,13 @@ public class HomePageFragment extends BaseFragment {
                 if (mdistanceY <= toolbarHeight) {
                     float scale = (float) mdistanceY / toolbarHeight;
                     float alpha = scale * 255;
-                    toolbar.setBackgroundColor(Color.argb((int) alpha, 11,215,18));
-                    statusBar.setBackgroundColor(Color.argb((int) alpha, 11,215,18));
+                    //11,215,18
+                    toolbar.setBackgroundColor(Color.argb((int) alpha, 86,209,118));
+                    statusBar.setBackgroundColor(Color.argb((int) alpha, 86,209,118));
                 } else{
-                    toolbar.setBackgroundColor(0xff0bd712);
-                    statusBar.setBackgroundColor(0xff0bd712);
+                    //0xff0bd712
+                    toolbar.setBackgroundColor(0xff56d176);
+                    statusBar.setBackgroundColor(0xff56d176);
                 }
             }
         });

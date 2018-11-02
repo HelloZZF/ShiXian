@@ -241,8 +241,9 @@ public class RegisterFragment extends BaseFragment {
                             } else {
                                 application.jumpToTargetActivity(getActivity());
                             }
+                            ToastUtils.show(getContext(), "注册成功,已自动登录");
                         }
-                        ToastUtils.show(getContext(), "注册成功,已自动登录");
+
                         getActivity().finish();
                     }
 
